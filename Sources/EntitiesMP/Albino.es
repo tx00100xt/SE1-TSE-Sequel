@@ -115,7 +115,7 @@ functions:
   virtual CTString GetPlayerKillDescription(const CTString &strPlayerName, const EDeath &eDeath)
   {
     CTString str;
-    str.PrintF(TRANS("An Albino killed %s"), strPlayerName);
+    str.PrintF(TRANS("An Albino killed %s"), (const char*)strPlayerName);
     return str;
   }
     virtual const CTFileName &GetComputerMessageName(void) const {
