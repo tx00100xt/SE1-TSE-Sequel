@@ -56,7 +56,7 @@ functions:
   virtual CTString GetPlayerKillDescription(const CTString &strPlayerName, const EDeath &eDeath)
   {
     CTString str;
-    str.PrintF(TRANS("A kleer dragged %s to hell"), strPlayerName);
+    str.PrintF(TRANS("A kleer dragged %s to hell"), (const char *) strPlayerName);
     return str;
   }
   virtual const CTFileName &GetComputerMessageName(void) const {

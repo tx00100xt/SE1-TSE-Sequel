@@ -172,9 +172,9 @@ functions:
   {
     CTString str;
     if (eDeath.eLastDamage.dmtType==DMT_CLOSERANGE) {
-      str.PrintF(TRANS("%s was sliced open by a Zibakandi"), strPlayerName);
+      str.PrintF(TRANS("%s was sliced open by a Zibakandi"), (const char *) strPlayerName);
     } else {
-      str.PrintF(TRANS("%s was terminated by a Zibakandi"), strPlayerName);
+      str.PrintF(TRANS("%s was terminated by a Zibakandi"), (const char *) strPlayerName);
     }
     return str;
   }

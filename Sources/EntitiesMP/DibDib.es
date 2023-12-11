@@ -52,7 +52,7 @@ functions:
   virtual CTString GetPlayerKillDescription(const CTString &strPlayerName, const EDeath &eDeath)
   {
     CTString str;
-    str.PrintF(TRANS("%s got killed by one of the lamest enemies in the game"), strPlayerName);
+    str.PrintF(TRANS("%s got killed by one of the lamest enemies in the game"), (const char *) strPlayerName);
     return str;
   }
   void Precache(void) {

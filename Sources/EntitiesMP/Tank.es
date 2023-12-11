@@ -109,7 +109,7 @@ functions:
   virtual CTString GetPlayerKillDescription(const CTString &strPlayerName, const EDeath &eDeath)
   {
     CTString str;
-    str.PrintF(TRANS("A bull-tank took %s to Hades"), strPlayerName);
+    str.PrintF(TRANS("A bull-tank took %s to Hades"), (const char *) strPlayerName);
     return str;
   }
 

@@ -107,9 +107,9 @@ functions:
   {
     CTString str;
     if (eDeath.eLastDamage.dmtType==DMT_CLOSERANGE) {
-      str.PrintF(TRANS("%s impaled by a Vodyani"), strPlayerName);
+      str.PrintF(TRANS("%s impaled by a Vodyani"), (const char *)strPlayerName);
     } else {
-      str.PrintF(TRANS("%s was burned to a crips by a Vodyani"), strPlayerName);
+      str.PrintF(TRANS("%s was burned to a crips by a Vodyani"), (const char *) strPlayerName);
     }
     return str;
   }

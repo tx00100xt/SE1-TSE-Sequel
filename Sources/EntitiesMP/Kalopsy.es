@@ -90,11 +90,11 @@ functions:
   {
     CTString str;
 	if (m_KalChar==KA_CACO) {
-      str.PrintF(TRANS("A Kalopsy unmade %s"), strPlayerName);
+      str.PrintF(TRANS("A Kalopsy unmade %s"), (const char *) strPlayerName);
     } else if (m_KalChar==KA_PAIN) {
-      str.PrintF(TRANS("A Kalopsy unmade %s"), strPlayerName);
+      str.PrintF(TRANS("A Kalopsy unmade %s"), (const char *) strPlayerName);
     } else if (m_KalChar==KA_LS) {
-      str.PrintF(TRANS("%s's soul has been taken"), strPlayerName);
+      str.PrintF(TRANS("%s's soul has been taken"), (const char *) strPlayerName);
     }
     return str;
   }

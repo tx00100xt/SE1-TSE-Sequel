@@ -61,7 +61,7 @@ functions:
   virtual CTString GetPlayerKillDescription(const CTString &strPlayerName, const EDeath &eDeath)
   {
     CTString str;
-    str.PrintF(TRANS("%s has died like a Roman gladiator"), strPlayerName);
+    str.PrintF(TRANS("%s has died like a Roman gladiator"), (const char *) strPlayerName);
     return str;
   }
 

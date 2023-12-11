@@ -79,7 +79,7 @@ functions:
   virtual CTString GetPlayerKillDescription(const CTString &strPlayerName, const EDeath &eDeath)
   {
     CTString str;
-    str.PrintF(TRANS("An ophidian gored %s"), strPlayerName);
+    str.PrintF(TRANS("An ophidian gored %s"), (const char *) strPlayerName);
     return str;
   }
   virtual const CTFileName &GetComputerMessageName(void) const {

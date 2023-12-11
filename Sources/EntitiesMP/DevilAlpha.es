@@ -78,7 +78,7 @@ functions:
   virtual CTString GetPlayerKillDescription(const CTString &strPlayerName, const EDeath &eDeath)
   {
     CTString str;
-    str.PrintF(TRANS("An Amalgam Colossus obliterated %s"), strPlayerName);
+    str.PrintF(TRANS("An Amalgam Colossus obliterated %s"), (const char *) strPlayerName);
     return str;
   }
   

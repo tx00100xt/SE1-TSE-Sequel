@@ -66,7 +66,7 @@ functions:
   virtual CTString GetPlayerKillDescription(const CTString &strPlayerName, const EDeath &eDeath)
   {
     CTString str;
-    str.PrintF(TRANS("A mutan panda has made %s extinct"), strPlayerName);
+    str.PrintF(TRANS("A mutan panda has made %s extinct"), (const char *) strPlayerName);
     return str;
   }
   

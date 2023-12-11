@@ -120,7 +120,7 @@ functions:
   virtual CTString GetPlayerKillDescription(const CTString &strPlayerName, const EDeath &eDeath)
   {
     CTString str;
-    str.PrintF(TRANS("%s has been exterminated"), strPlayerName);
+    str.PrintF(TRANS("%s has been exterminated"), (const char *) strPlayerName);
     return str;
   }
 

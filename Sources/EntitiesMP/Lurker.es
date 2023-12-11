@@ -74,7 +74,7 @@ functions:
   virtual CTString GetPlayerKillDescription(const CTString &strPlayerName, const EDeath &eDeath)
   {
     CTString str;
-    str.PrintF(TRANS("A Carcinus Lurker zapped %s out of existence"), strPlayerName);
+    str.PrintF(TRANS("A Carcinus Lurker zapped %s out of existence"), (const char *) strPlayerName);
     return str;
   }
 

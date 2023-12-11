@@ -110,7 +110,7 @@ functions:
   virtual CTString GetPlayerKillDescription(const CTString &strPlayerName, const EDeath &eDeath)
   {
     CTString str;
-    str.PrintF(TRANS("A Mogwai set %s up for reincarnation"), strPlayerName);
+    str.PrintF(TRANS("A Mogwai set %s up for reincarnation"), (const char *) strPlayerName);
     return str;
   }
   virtual const CTFileName &GetComputerMessageName(void) const {

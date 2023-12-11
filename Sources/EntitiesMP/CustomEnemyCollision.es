@@ -101,7 +101,7 @@ functions:
   virtual CTString GetPlayerKillDescription(const CTString &strPlayerName, const EDeath &eDeath)
   {
     CTString str;
-    str.PrintF(TRANS("%s was killed by a monster"), strPlayerName);
+    str.PrintF(TRANS("%s was killed by a monster"), (const char *) strPlayerName);
     return str;
   }
   void Precache(void) {

@@ -128,7 +128,7 @@ functions:
   virtual CTString GetPlayerKillDescription(const CTString &strPlayerName, const EDeath &eDeath)
   {
     CTString str;
-    str.PrintF(TRANS("%s has been sacrificed to an alien god"), strPlayerName);
+    str.PrintF(TRANS("%s has been sacrificed to an alien god"), (const char *) strPlayerName);
     return str;
   }
 

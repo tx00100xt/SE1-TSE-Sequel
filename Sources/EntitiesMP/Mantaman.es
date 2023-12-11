@@ -53,9 +53,9 @@ functions:
   {
     CTString str;
     if (eDeath.eLastDamage.dmtType==DMT_CLOSERANGE) {
-      str.PrintF(TRANS("A Mobulon broke all the bones of %s"), strPlayerName);
+      str.PrintF(TRANS("A Mobulon broke all the bones of %s"), (const char *) strPlayerName);
     } else {
-      str.PrintF(TRANS("A Mobulon eliminated %s"), strPlayerName);
+      str.PrintF(TRANS("A Mobulon eliminated %s"), (const char *) strPlayerName);
     }
     return str;
   }

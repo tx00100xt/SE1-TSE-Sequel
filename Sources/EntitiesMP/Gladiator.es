@@ -82,7 +82,7 @@ functions:
   virtual CTString GetPlayerKillDescription(const CTString &strPlayerName, const EDeath &eDeath)
   {
     CTString str;
-      str.PrintF(TRANS("A porcine berserker has clobbered %s"), strPlayerName);
+      str.PrintF(TRANS("A porcine berserker has clobbered %s"), (const char *) strPlayerName);
     return str;
   }
 

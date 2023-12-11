@@ -70,9 +70,9 @@ functions:
   {
     CTString str;
     if (eDeath.eLastDamage.dmtType==DMT_CLOSERANGE) {
-      str.PrintF(TRANS("%s was ripped apart by a Dragon"), strPlayerName);
+      str.PrintF(TRANS("%s was ripped apart by a Dragon"), (const char *) strPlayerName);
     } else {
-      str.PrintF(TRANS("A dragon burned %s to a crisp"), strPlayerName);
+      str.PrintF(TRANS("A dragon burned %s to a crisp"), (const char *) strPlayerName);
     }
     return str;
   }
