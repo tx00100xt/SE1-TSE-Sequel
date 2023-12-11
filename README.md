@@ -21,23 +21,30 @@ Mod created by JesterOfDestiny
 
 **Coding:**  
  - JesterOfdestiny, SeriousAlexej, Rakanishu, Dreamy Cecil, Uni Musuotankarep
+
 **Apping:**  
  - JesterOfdestiny, Rakanishu (demo map)
+
 **Modelling:**  
  - T-ReXx, Ar2R-devil-PiNKy, Dr. Trigger, zorgpro2013, RCK5_WSG45.DOS, LevC, Kote, Mazuto, Rakanishu, Kirill Kotliar, Ded Kadath, VadikZ, OmiTheYellow, Row Video Games, drinfested, KingJohaan, coremort, MaxBugor, JesterOfDestiny, ThinkingOnPause, LG_Labian, ervislilaj, shiva3d, Constantin Os, Kelli Ray, God Appeasers, Poly by Google
+
 **Music:**  
  - Valery "Senmuth" Androsov, Aim To Head
+
 **Sound design:**  
  - JesterOfDestiny, Mazzelmi, Maxsis_Specifications
+
 **Textures:**  
  - JesterOfDestiny, Nifran Tay, Space Engine, Dall-E and other assorted AI image generators, RCK5_WSG45.DOS
+
 **Additional:**
  - Zdzichu for the Alpha port
  - The303 for LithUnwrap
  - Andrey for the Blender tools
  - noam 2000 for the SS2 enemy ports
+
 **Special thanks to:**  
- - Serious MkBewe, Thanadrax and everyone in the Serious Sam Classics Discord group
+ - Serious MkBewe, Thanadrax and everyone in the Serious Sam Classics Discord group  
 
 ![OW1](https://img.itch.zone/aW1hZ2UvMjM4NTMxMy8xNDE3NDk4OC5qcGc=/original/e7ixgy.jpg)
 
@@ -55,7 +62,7 @@ Mod created by JesterOfDestiny
 If you need a modification for game version 1.07, you can download it on the author's page.
 
 This mod required https://github.com/tx00100xt/SeriousSamClassic or https://github.com/tx00100xt/SeriousSamClassic-VK to run.  
-and https://github.com/tx00100xt/SE1-ParametricParticles  
+And https://github.com/tx00100xt/SE1-ParametricParticles  
 **Note:**  
 The release already contains the necessary libraries and resources from:  
 https://github.com/tx00100xt/SE1-ParametricParticles
@@ -67,8 +74,7 @@ wget https://archive.org/download/sam-tse-sequel/SamTSE-Sequel.tar.xz
 ```
 
 Building Serious Sam: The Sequel
---------------------------------
-This mod required https://github.com/tx00100xt/SeriousSamClassic or https://github.com/tx00100xt/SeriousSamClassic-VK to run.    
+--------------------------------   
 
 ### Linux
 
