@@ -69,9 +69,9 @@ functions:
   {
     CTString str;
     if (m_bInAir) {
-      str.PrintF(TRANS("A Tweedle Dum-Dum smacked the shit out of %s"), strPlayerName);
+      str.PrintF(TRANS("A Tweedle Dum-Dum smacked the shit out of %s"), (const char *) strPlayerName);
     } else {
-      str.PrintF(TRANS("A Dum-Dum nibbled %s's nipples off"), strPlayerName);
+      str.PrintF(TRANS("A Dum-Dum nibbled %s's nipples off"), (const char *) strPlayerName);
     }
     return str;
   }
