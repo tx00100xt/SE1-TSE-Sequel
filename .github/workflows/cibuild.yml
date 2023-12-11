@@ -1,0 +1,764 @@
+name: Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build-alpine-x86:
+    name: Alpine ${{ matrix.Configuration }} ${{ matrix.Platform }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        Configuration: [Release]
+        Platform: [x86]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install latest stable Alpine Linux
+      uses: jirutka/setup-alpine@master
+      with:
+        arch: ${{ matrix.Platform }}
+        branch: 'latest-stable'
+        packages: build-base cmake bison flex nasm xz sed sdl2-dev zlib-dev libogg-dev libvorbis-dev
+        
+    - name: Get current date
+      id: date
+      uses: Kaven-Universe/github-action-current-date-time@v1
+      with:
+         format: "YYYYMMDD"
+
+    - name: Show current date
+      run: |
+        echo "${{ steps.date.outputs.time }}"
+        
+    - name: Run CMake
+      shell: alpine.sh {0}
+      run: |
+        cd ${{github.workspace}}/Sources 
+        find . -name "CMakeLists.txt" -exec sed -i 's/-march=native/-mtune=generic/g' {} +
+        cat CMakeLists.txt | grep mtune
+        CFLAGS="-w" CXXFLAGS="-w" cmake -B ${{github.workspace}}/Sources/build-x86 -DCMAKE_BUILD_TYPE=${{ matrix.Configuration }} -DCMAKE_C_FLAGS=-mmmx -DCMAKE_CXX_FLAGS=-mmmx -DUSE_I386_NASM_ASM=TRUE
+
+    - name: Run Build
+      shell: alpine.sh {0}
+      run: |
+          cd ${{github.workspace}}/Sources/build-x86    
+          make ecc
+          make -j$(nproc || echo 4)
+          cp -vfr Debug/*.so ../../x32/SamTSE/Mods/Sequel/Bin
+          cd ${{github.workspace}}
+          tar -cJpvf SamTSE-Sequel-${{ steps.date.outputs.time }}-alpne-x86-bin.tar.xz x32
+          
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: SamTSE-Sequel-${{ steps.date.outputs.time }}-alpne-x86-bin.tar.xz
+        path: SamTSE-Sequel-${{ steps.date.outputs.time }}-alpne-x86-bin.tar.xz          
+
+  build-alpine-x64:
+    name: Alpine ${{ matrix.Configuration }} ${{ matrix.Platform }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        Configuration: [Release]
+        Platform: [x86_64]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install latest stable Alpine Linux
+      uses: jirutka/setup-alpine@master
+      with:
+        arch: ${{ matrix.Platform }}
+        branch: 'latest-stable'
+        packages: build-base cmake bison flex nasm xz sed sdl2-dev zlib-dev libogg-dev libvorbis-dev
+        
+    - name: Get current date
+      id: date
+      uses: Kaven-Universe/github-action-current-date-time@v1
+      with:
+         format: "YYYYMMDD"
+
+    - name: Show current date
+      run: |
+        echo "${{ steps.date.outputs.time }}"
+        
+    - name: Run CMake
+      shell: alpine.sh {0}
+      run: |
+        cd ${{github.workspace}}/Sources 
+        find . -name "CMakeLists.txt" -exec sed -i 's/-march=native/-mtune=generic/g' {} +
+        cat CMakeLists.txt | grep mtune
+        CFLAGS="-w" CXXFLAGS="-w" cmake -B ${{github.workspace}}/Sources/build-x64 -DCMAKE_BUILD_TYPE=${{ matrix.Configuration }}
+
+    - name: Run Build
+      shell: alpine.sh {0}
+      run: |
+          cd ${{github.workspace}}/Sources/build-x64    
+          make ecc
+          make -j$(nproc || echo 4)
+          cp -vfr Debug/*.so ../../x64/SamTSE/Mods/Sequel/Bin
+          cd ${{github.workspace}}
+          tar -cJpvf SamTSE-Sequel-${{ steps.date.outputs.time }}-alpne-x86_64-bin.tar.xz x64
+          
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: SamTSE-Sequel-${{ steps.date.outputs.time }}-alpne-x86_64-bin.tar.xz
+        path: SamTSE-Sequel-${{ steps.date.outputs.time }}-alpne-x86_64-bin.tar.xz
+        
+        
+  build-ubuntu-x64:
+    name: Ubuntu ${{ matrix.Configuration }} ${{ matrix.Platform }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        Configuration: [Release]
+        Platform: [x64]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install packages
+      run: |
+          sudo apt-get update -qq
+          sudo apt-get install -qq -y libsdl2-dev libogg-dev libvorbis-dev &&
+          sudo apt-get install -qq -y bison flex sed zlib1g-dev      
+
+    - name: Get current date
+      id: date
+      uses: Kaven-Universe/github-action-current-date-time@v1
+      with:
+         format: "YYYYMMDD"
+
+    - name: Show current date
+      run: |
+        echo "${{ steps.date.outputs.time }}"
+        
+    - name: Run CMake
+      run: |
+          cd ${{github.workspace}}/Sources
+          find . -name "CMakeLists.txt" -exec sed -i 's/-march=native/-mtune=generic/g' {} +
+          cat CMakeLists.txt | grep mtune
+          cmake -B ${{github.workspace}}/Sources/build-x64 -DCMAKE_BUILD_TYPE=${{ matrix.Configuration }}
+          
+    - name: Run Build
+      run: |
+          cd ${{github.workspace}}/Sources/build-x64    
+          make ecc
+          make -j$(nproc || echo 4)
+          cp -vfr Debug/*.so ../../x64/SamTSE/Mods/Sequel/Bin
+          cd ${{github.workspace}}
+          XZ_DEFAULTS="-T 10" tar --use-compress-program=xz -cpvf SamTSE-Sequel-${{ steps.date.outputs.time }}-lnx-amd64-bin.tar.xz x64
+          
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: SamTSE-Sequel-${{ steps.date.outputs.time }}-lnx-amd64-bin.tar.xz
+        path: SamTSE-Sequel-${{ steps.date.outputs.time }}-lnx-amd64-bin.tar.xz 
+
+  build-windows-x86:
+    name: Windows ${{ matrix.Configuration }} ${{ matrix.Platform }}
+    runs-on: windows-2019
+    strategy:
+      fail-fast: false
+      matrix:
+        Configuration: [Release]
+        Platform: [Win32]
+    steps:
+    - uses: actions/checkout@v3
+    - uses: microsoft/setup-msbuild@v1.3.1
+      with:
+        vs-version: '14.0'
+        
+    - name: Get current date
+      id: date
+      uses: Kaven-Universe/github-action-current-date-time@v1
+      with:
+         format: "YYYYMMDD"
+
+    - name: Show current date
+      run: |
+        echo "${{ steps.date.outputs.time }}"
+               
+    - name: MS Build
+      working-directory: Sources
+      run: | 
+         msbuild /m /p:Configuration="${{ matrix.Configuration }}" /p:Platform="${{ matrix.Platform }}" Sequel.sln 
+         cd ${{github.workspace}}
+         7z a -mx=9 SamTSE-Sequel-${{ steps.date.outputs.time }}-win32-bin.7z x32
+      
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: SamTSE-Sequel-${{ steps.date.outputs.time }}-win32-bin.7z
+        path: SamTSE-Sequel-${{ steps.date.outputs.time }}-win32-bin.7z 
+        
+  build-windows-x64:
+    name: Windows ${{ matrix.Configuration }} ${{ matrix.Platform }}
+    runs-on: windows-2019
+    strategy:
+      fail-fast: false
+      matrix:
+        Configuration: [Release]
+        Platform: [x64]
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: microsoft/setup-msbuild@v1.3.1
+      with:
+        vs-version: '14.0'
+
+    - name: Get current date
+      id: date
+      uses: Kaven-Universe/github-action-current-date-time@v1
+      with:
+         format: "YYYYMMDD"
+
+    - name: Show current date
+      run: |
+        echo "${{ steps.date.outputs.time }}"
+        
+    - name: MS Build
+      working-directory: Sources
+      run: | 
+         msbuild /m /p:Configuration="${{ matrix.Configuration }}" /p:Platform="${{ matrix.Platform }}" Sequel.sln 
+         cd ${{github.workspace}}
+         7z a -mx=9 SamTSE-Sequel-${{ steps.date.outputs.time }}-win64-bin.7z x64
+      
+        
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: SamTSE-Sequel-${{ steps.date.outputs.time }}-win64-bin.7z
+        path: SamTSE-Sequel-${{ steps.date.outputs.time }}-win64-bin.7z        
+
+  build-freebsd-x64:
+    name: FreeBSD ${{ matrix.Configuration }} ${{ matrix.Platform }}
+    runs-on: macos-12
+    strategy:
+      fail-fast: false
+      matrix:
+        Configuration: [Release]
+        Platform: [x64]    
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get current date
+        id: date
+        uses: Kaven-Universe/github-action-current-date-time@v1
+        with:
+          format: "YYYYMMDD"
+
+      - name: Show current date
+        run: |
+          echo "${{ steps.date.outputs.time }}"
+          
+      - name: Build on FreeBSD
+        uses: cross-platform-actions/action@v0.10.0
+        with:
+          operating_system: freebsd
+          architecture: x86-64
+          version: '13.1'
+          shell: bash
+          run: |
+            uname -a
+            sudo pkg install -y bison flex sdl2 libogg libvorbis zlib-ng cmake
+            cd ${{github.workspace}}/Sources
+            awk '{sub("-march=native","-mtune=generic")}1' CMakeLists.txt > CmakeTemp.txt && mv CmakeTemp.txt CMakeLists.txt
+            cat CMakeLists.txt | grep mtune
+            cmake -B ${{github.workspace}}/Sources/build-x64 -DCMAKE_BUILD_TYPE=${{ matrix.Configuration }}
+            cd ${{github.workspace}}/Sources/build-x64
+            make ecc
+            make -j$(sysctl -n hw.ncpu || echo 4)
+            cp -vfr Debug/*.so ../../x64/SamTSE/Mods/Sequel/Bin
+            cd ${{github.workspace}}
+            XZ_DEFAULTS="-T 10" tar --use-compress-program=xz -cpvf SamTSE-Sequel-${{ steps.date.outputs.time }}-bsd-amd64-bin.tar.xz x64
+                      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: SamTSE-Sequel-${{ steps.date.outputs.time }}-bsd-amd64-bin.tar.xz
+          path: SamTSE-Sequel-${{ steps.date.outputs.time }}-bsd-amd64-bin.tar.xz
+    
+  build-macos-x64:
+    name: macOS ${{ matrix.Configuration }} ${{ matrix.Platform }}
+    runs-on: macos-12
+    strategy:
+      fail-fast: false
+      matrix:
+        Configuration: [Release]
+        Platform: [x64]    
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get current date
+        id: date
+        uses: Kaven-Universe/github-action-current-date-time@v1
+        with:
+          format: "YYYYMMDD"
+
+      - name: Show current date
+        run: |
+          echo "${{ steps.date.outputs.time }}"
+          
+      - name: Build on macOS
+        run: |
+            uname -a
+            brew install bison flex sdl2 libogg libvorbis zlib-ng cmake vulkan-loader vulkan-headers
+            cd ${{github.workspace}}/Sources
+            awk '{sub("-march=native","-mtune=generic")}1' CMakeLists.txt > CmakeTemp.txt && mv CmakeTemp.txt CMakeLists.txt
+            cat CMakeLists.txt | grep mtune
+            cmake -B ${{github.workspace}}/Sources/build-x64 -DCMAKE_BUILD_TYPE=${{ matrix.Configuration }} -DTSE=TRUE
+            cd ${{github.workspace}}/Sources/build-x64
+            make ecc
+            make -j$(sysctl -n hw.ncpu || echo 4)
+            cp -vfr Debug/*.dylib ../../x64/SamTSE/Mods/Sequel/Bin
+            cd ${{github.workspace}}
+            XZ_DEFAULTS="-T 10" tar --use-compress-program=xz -cpvf SamTSE-Sequel-${{ steps.date.outputs.time }}-macos-amd64-bin.tar.xz x64
+                      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: SamTSE-Sequel-${{ steps.date.outputs.time }}-macos-amd64-bin.tar.xz
+          path: SamTSE-Sequel-${{ steps.date.outputs.time }}-macos-amd64-bin.tar.xz     
+       
+  build-raspios-armv7l:
+    name: RPi OS Lite ${{ matrix.Configuration }} ${{ matrix.arch }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: [armv7l]
+        Configuration: [Release]      
+        include:
+        - arch: armv7l
+          cpu: cortex-a53
+          base_image: raspios_lite:latest
+          cpu_info: cpuinfo/raspberrypi_3b
+         
+    steps:
+    - name: Get current date
+      id: date
+      uses: Kaven-Universe/github-action-current-date-time@v1
+      with:
+         format: "YYYYMMDD"
+
+    - name: Show current date
+      run: |
+        echo "${{ steps.date.outputs.time }}"    
+    
+    - uses: pguyot/arm-runner-action@v2
+      with:
+        image_additional_mb: 1024
+        base_image: ${{ matrix.base_image }}
+        cpu: ${{ matrix.cpu }}
+        cpu_info: ${{ matrix.cpu_info }}
+        shell: /bin/bash 
+        copy_artifact_path: Release
+        commands: |
+            mkdir Release
+            test `uname -m` = ${{ matrix.arch }}
+            grep Model /proc/cpuinfo
+            apt-get update -y --allow-releaseinfo-change
+            apt-get install --no-install-recommends -y git bison flex cmake make gcc libc6-dev libsdl2-dev libogg-dev libvorbis-dev zlib1g-dev    
+            cat /proc/cpuinfo
+            cat /etc/os-release
+            uname -a
+            gcc -c -Q -mcpu=native --help=target
+            git clone https://github.com/tx00100xt/SE1-TSE-Sequel.git
+             cmake SE1-TSE-Sequel/Sources -B SE1-TSE-Sequel/Sources/build-armv7l -DCMAKE_BUILD_TYPE=${{ matrix.Configuration }} -DUSE_I386_NASM_ASM=FALSE -DRPI4=TRIE
+            make -C SE1-TSE-Sequel/Sources/build-armv7l ecc
+            make -j4 -C SE1-TSE-Sequel/Sources/build-armv7l
+            cp -vfr SE1-TSE-Sequel/Sources/build-armv7l/Debug/*.so SE1-TSE-Sequel/x32/SamTSE/Mods/Sequel/Bin           
+            mv SE1-TSE-Sequel/x32 armv7l
+            XZ_DEFAULTS="-T 10" tar --use-compress-program=xz -cpvf SamTSE-Sequel-${{ steps.date.outputs.time }}-rpios-armv7l-bin.tar.xz armv7l
+            cp SamTSE-Sequel-${{ steps.date.outputs.time }}-rpios-armv7l-bin.tar.xz Release/
+
+    - name: Prepare Release
+      run: |           
+         sudo mv ${{github.workspace}}/Release/SamTSE-Sequel-${{ steps.date.outputs.time }}-rpios-armv7l-bin.tar.xz ${{github.workspace}}/
+                        
+    - name: Upload Release
+      uses: actions/upload-artifact@v3
+      with:
+        name: SamTSE-Sequel-${{ steps.date.outputs.time }}-rpios-armv7l-bin.tar.xz
+        path: SamTSE-Sequel-${{ steps.date.outputs.time }}-rpios-armv7l-bin.tar.xz
+        
+  build-raspios-aarch64:
+    name: RPi OS Lite ${{ matrix.Configuration }} ${{ matrix.arch }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: [aarch64]
+        Configuration: [Release]      
+        include:
+        - arch: aarch64
+          cpu: cortex-a72
+          base_image: raspios_lite_arm64:latest
+          cpu_info: cpuinfo/raspberrypi_4b
+         
+    steps:
+    - name: Get current date
+      id: date
+      uses: Kaven-Universe/github-action-current-date-time@v1
+      with:
+         format: "YYYYMMDD"
+
+    - name: Show current date
+      run: |
+        echo "${{ steps.date.outputs.time }}"    
+    
+    - uses: pguyot/arm-runner-action@v2
+      with:
+        image_additional_mb: 1024
+        base_image: ${{ matrix.base_image }}
+        cpu: ${{ matrix.cpu }}
+        cpu_info: ${{ matrix.cpu_info }}
+        shell: /bin/bash 
+        copy_artifact_path: Release
+        commands: |
+            mkdir Release
+            test `uname -m` = ${{ matrix.arch }}
+            grep Model /proc/cpuinfo
+            apt-get update -y --allow-releaseinfo-change
+            apt-get install --no-install-recommends -y git bison flex cmake make gcc libc6-dev libsdl2-dev libogg-dev libvorbis-dev zlib1g-dev    
+            cat /proc/cpuinfo
+            cat /etc/os-release
+            uname -a
+            gcc -c -Q -mcpu=native --help=target
+            git clone https://github.com/tx00100xt/SE1-TSE-Sequel.git
+            cmake SE1-TSE-Sequel/Sources -B SE1-TSE-Sequel/Sources/build-aarch64 -DCMAKE_BUILD_TYPE=${{ matrix.Configuration }} -DRPI4=TRIE
+            make -C SE1-TSE-Sequel/Sources/build-aarch64 ecc
+            make -j4 -C SE1-TSE-Sequel/Sources/build-aarch64
+            cp -vfr SE1-TSE-Sequel/Sources/build-aarch64/Debug/*.so SE1-TSE-Sequel/x64/SamTSE/Mods/Sequel/Bin            
+            mv SE1-TSE-Sequel/x64 aarch64
+            XZ_DEFAULTS="-T 10" tar --use-compress-program=xz -cpvf SamTSE-Sequel-${{ steps.date.outputs.time }}-rpios-aarch64-bin.tar.xz aarch64
+            cp SamTSE-Sequel-${{ steps.date.outputs.time }}-rpios-aarch64-bin.tar.xz Release/
+
+    - name: Prepare Release
+      run: |           
+         sudo mv ${{github.workspace}}/Release/SamTSE-Sequel-${{ steps.date.outputs.time }}-rpios-aarch64-bin.tar.xz ${{github.workspace}}/
+                        
+    - name: Upload Release
+      uses: actions/upload-artifact@v3
+      with:
+        name: SamTSE-Sequel-${{ steps.date.outputs.time }}-rpios-aarch64-bin.tar.xz
+        path: SamTSE-Sequel-${{ steps.date.outputs.time }}-rpios-aarch64-bin.tar.xz
+
+  build-ubuntu-riscv64:
+    # The host should always be linux
+    runs-on: ubuntu-22.04
+    name: Ubuntu Release ${{ matrix.arch }}
+
+    # Run steps on a matrix of 4 arch/distro combinations
+    strategy:
+      matrix:
+        include:
+          - arch: riscv64
+            distro: ubuntu22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: uraimo/run-on-arch-action@v2
+        name: Build artifact
+        id: build
+        with:
+          arch: ${{ matrix.arch }}
+          distro: ${{ matrix.distro }}
+
+          # Not required, but speeds up builds
+          githubToken: ${{ github.token }}
+
+          # Create an artifacts directory
+          setup: |
+            mkdir -p "${PWD}/artifacts"
+
+          # Mount the artifacts directory as /artifacts in the container
+          dockerRunArgs: |
+            --volume "${PWD}/artifacts:/artifacts"
+
+          # Pass some environment variables to the container
+          env: | # YAML, but pipe character is necessary
+            artifact_name: git-${{ matrix.distro }}_${{ matrix.arch }}
+
+          # The shell to run commands with in the container
+          shell: /bin/bash
+
+          # Install some dependencies in the container. This speeds up builds if
+          # you are also using githubToken. Any dependencies installed here will
+          # be part of the container image that gets cached, so subsequent
+          # builds don't have to re-install them. The image layer is cached
+          # publicly in your project's package repository, so it is vital that
+          # no secrets are present in the container state or logs.
+          install: |
+            case "${{ matrix.distro }}" in
+              ubuntu*|jessie|stretch|buster|bullseye)
+                apt-get update -qq -y
+                apt-get install -qq -y git cmake build-essential xz-utils &&
+                apt-get install -qq -y libsdl2-dev libogg-dev libvorbis-dev &&
+                apt-get install -qq -y bison flex zlib1g-dev libxxhash-dev &&
+                apt-get install -qq -y libvulkan1 libvulkan-dev vulkan-validationlayers vulkan-validationlayers-dev    
+                ;;
+              fedora*)
+                dnf -y update
+                dnf -y install git which
+                ;;
+              alpine*)
+                apk update
+                apk add git
+                ;;
+            esac
+
+          # Produce a binary artifact and place it in the mounted volume
+          run: |
+            cd ${{github.workspace}}/Sources            
+            cmake -B ${{github.workspace}}/Sources/build -DCMAKE_BUILD_TYPE=Release -DTSE=TRUE -DUSE_I386_NASM_ASM=FALSE
+            cd ${{github.workspace}}/Sources/build
+            make ecc
+            make -j4          
+
+      - name: Get current date
+        id: date
+        uses: Kaven-Universe/github-action-current-date-time@v1
+        with:
+           format: "YYYYMMDD"
+
+      - name: Show current date
+        run: |
+          echo "${{ steps.date.outputs.time }}"   
+
+      - name: Make artifact
+        # Items placed in /artifacts in the container will be in
+        # ${PWD}/artifacts on the host.
+        run: |
+            cd ${{github.workspace}}
+            mkdir riscv64 && cd riscv64
+            mkdir {SamTSE,SamTSE/Mods,SamTSE/Mods/Sequel,SamTSE/Mods/Sequel/Bin}
+            cd ${{github.workspace}}
+            echo "*** Copy Sequel Libraries ***"
+            echo "cp -vfr Sources/build/Debug/*.so riscv64/SamTSE/Mods/Sequel/Bin"
+            cp -vfr Sources/build/Debug/libEntitiesMP.so riscv64/SamTSE/Mods/Sequel/Bin
+            cp -vfr Sources/build/Debug/libGameMP.so riscv64/SamTSE/Mods/Sequel/Bin
+
+            echo "*** Create archive ***"
+            tar -cJpvf SamTSE-Sequel-${{ steps.date.outputs.time }}-lnx-riscv64-bin.tar.xz riscv64          
+            
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: SamTSE-Sequel-${{ steps.date.outputs.time }}-lnx-riscv64-bin.tar.xz
+          path: SamTSE-Sequel-${{ steps.date.outputs.time }}-lnx-riscv64-bin.tar.xz         
+
+  build-ubuntu-ppc64le:
+    # The host should always be linux
+    runs-on: ubuntu-22.04
+    name: Ubuntu Release ${{ matrix.arch }}
+
+    # Run steps on a matrix of 4 arch/distro combinations
+    strategy:
+      matrix:
+        include:
+          - arch: ppc64le
+            distro: ubuntu22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: uraimo/run-on-arch-action@v2
+        name: Build artifact
+        id: build
+        with:
+          arch: ${{ matrix.arch }}
+          distro: ${{ matrix.distro }}
+
+          # Not required, but speeds up builds
+          githubToken: ${{ github.token }}
+
+          # Create an artifacts directory
+          setup: |
+            mkdir -p "${PWD}/artifacts"
+
+          # Mount the artifacts directory as /artifacts in the container
+          dockerRunArgs: |
+            --volume "${PWD}/artifacts:/artifacts"
+
+          # Pass some environment variables to the container
+          env: | # YAML, but pipe character is necessary
+            artifact_name: git-${{ matrix.distro }}_${{ matrix.arch }}
+
+          # The shell to run commands with in the container
+          shell: /bin/bash
+
+          # Install some dependencies in the container. This speeds up builds if
+          # you are also using githubToken. Any dependencies installed here will
+          # be part of the container image that gets cached, so subsequent
+          # builds don't have to re-install them. The image layer is cached
+          # publicly in your project's package repository, so it is vital that
+          # no secrets are present in the container state or logs.
+          install: |
+            case "${{ matrix.distro }}" in
+              ubuntu*|jessie|stretch|buster|bullseye)
+                apt-get update -qq -y
+                apt-get install -qq -y git cmake build-essential xz-utils &&
+                apt-get install -qq -y libsdl2-dev libogg-dev libvorbis-dev &&
+                apt-get install -qq -y bison flex zlib1g-dev libxxhash-dev &&
+                apt-get install -qq -y libvulkan1 libvulkan-dev vulkan-validationlayers vulkan-validationlayers-dev    
+                ;;
+              fedora*)
+                dnf -y update
+                dnf -y install git which
+                ;;
+              alpine*)
+                apk update
+                apk add git
+                ;;
+            esac
+
+          # Produce a binary artifact and place it in the mounted volume
+          run: |
+            cd ${{github.workspace}}/Sources            
+            cmake -B ${{github.workspace}}/Sources/build -DCMAKE_BUILD_TYPE=Release -DTSE=TRUE -DUSE_I386_NASM_ASM=FALSE
+            cd ${{github.workspace}}/Sources/build
+            make ecc
+            make -j4          
+
+      - name: Get current date
+        id: date
+        uses: Kaven-Universe/github-action-current-date-time@v1
+        with:
+           format: "YYYYMMDD"
+
+      - name: Show current date
+        run: |
+          echo "${{ steps.date.outputs.time }}"   
+
+      - name: Make artifact
+        # Items placed in /artifacts in the container will be in
+        # ${PWD}/artifacts on the host.
+        run: |
+            cd ${{github.workspace}}
+            mkdir ppc64le && cd ppc64le
+            mkdir {SamTSE,SamTSE/Mods,SamTSE/Mods/Sequel,SamTSE/Mods/Sequel/Bin}
+            cd ${{github.workspace}}
+            echo "*** Copy Sequel Libraries ***"
+            echo "cp -vfr Sources/build/Debug/*.so ppc64le/SamTSE/Mods/Sequel/Bin"
+            cp -vfr Sources/build/Debug/libEntitiesMP.so ppc64le/SamTSE/Mods/Sequel/Bin
+            cp -vfr Sources/build/Debug/libGameMP.so ppc64le/SamTSE/Mods/Sequel/Bin
+
+            echo "*** Create archive ***"
+            tar -cJpvf SamTSE-Sequel-${{ steps.date.outputs.time }}-lnx-ppc64le-bin.tar.xz ppc64le         
+            
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: SamTSE-Sequel-${{ steps.date.outputs.time }}-lnx-ppc64le-bin.tar.xz
+          path: SamTSE-Sequel-${{ steps.date.outputs.time }}-lnx-ppc64le-bin.tar.xz         
+
+  build-ubuntu-s390x:
+    # The host should always be linux
+    runs-on: ubuntu-22.04
+    name: Ubuntu Release ${{ matrix.arch }}
+
+    # Run steps on a matrix of 4 arch/distro combinations
+    strategy:
+      matrix:
+        include:
+          - arch: s390x
+            distro: ubuntu22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: uraimo/run-on-arch-action@v2
+        name: Build artifact
+        id: build
+        with:
+          arch: ${{ matrix.arch }}
+          distro: ${{ matrix.distro }}
+
+          # Not required, but speeds up builds
+          githubToken: ${{ github.token }}
+
+          # Create an artifacts directory
+          setup: |
+            mkdir -p "${PWD}/artifacts"
+
+          # Mount the artifacts directory as /artifacts in the container
+          dockerRunArgs: |
+            --volume "${PWD}/artifacts:/artifacts"
+
+          # Pass some environment variables to the container
+          env: | # YAML, but pipe character is necessary
+            artifact_name: git-${{ matrix.distro }}_${{ matrix.arch }}
+
+          # The shell to run commands with in the container
+          shell: /bin/bash
+
+          # Install some dependencies in the container. This speeds up builds if
+          # you are also using githubToken. Any dependencies installed here will
+          # be part of the container image that gets cached, so subsequent
+          # builds don't have to re-install them. The image layer is cached
+          # publicly in your project's package repository, so it is vital that
+          # no secrets are present in the container state or logs.
+          install: |
+            case "${{ matrix.distro }}" in
+              ubuntu*|jessie|stretch|buster|bullseye)
+                apt-get update -qq -y
+                apt-get install -qq -y git cmake build-essential xz-utils &&
+                apt-get install -qq -y libsdl2-dev libogg-dev libvorbis-dev &&
+                apt-get install -qq -y bison flex zlib1g-dev libxxhash-dev &&
+                apt-get install -qq -y libvulkan1 libvulkan-dev vulkan-validationlayers vulkan-validationlayers-dev    
+                ;;
+              fedora*)
+                dnf -y update
+                dnf -y install git which
+                ;;
+              alpine*)
+                apk update
+                apk add git
+                ;;
+            esac
+
+          # Produce a binary artifact and place it in the mounted volume
+          run: |
+            cd ${{github.workspace}}/Sources            
+            cmake -B ${{github.workspace}}/Sources/build -DCMAKE_BUILD_TYPE=Release -DTSE=TRUE -DUSE_I386_NASM_ASM=FALSE
+            cd ${{github.workspace}}/Sources/build
+            make ecc
+            make -j4          
+
+      - name: Get current date
+        id: date
+        uses: Kaven-Universe/github-action-current-date-time@v1
+        with:
+           format: "YYYYMMDD"
+
+      - name: Show current date
+        run: |
+          echo "${{ steps.date.outputs.time }}"   
+
+      - name: Make artifact
+        # Items placed in /artifacts in the container will be in
+        # ${PWD}/artifacts on the host.
+        run: |
+            cd ${{github.workspace}}
+            mkdir s390x && cd s390x
+            mkdir {SamTSE,SamTSE/Mods,SamTSE/Mods/Sequel,SamTSE/Mods/Sequel/Bin}
+            cd ${{github.workspace}}
+            echo "*** Copy Sequel Libraries ***"
+            echo "cp -vfr Sources/build/Debug/*.so s390x/SamTSE/Mods/Sequel/Bin"
+            cp -vfr Sources/build/Debug/libEntitiesMP.so s390x/SamTSE/Mods/Sequel/Bin
+            cp -vfr Sources/build/Debug/libGameMP.so s390x/SamTSE/Mods/Sequel/Bin
+
+            echo "*** Create archive ***"
+            tar -cJpvf SamTSE-Sequel-${{ steps.date.outputs.time }}-lnx-s390x-bin.tar.xz s390x          
+            
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: SamTSE-Sequel-${{ steps.date.outputs.time }}-lnx-s390x-bin.tar.xz
+          path: SamTSE-Sequel-${{ steps.date.outputs.time }}-lnx-s390x-bin.tar.xz         
+
