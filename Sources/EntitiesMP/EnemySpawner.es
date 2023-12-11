@@ -96,7 +96,7 @@ functions:
       }
       if (m_penEasyTarget!=NULL) {
         ((CTString&)m_strDescription).PrintF("->%s, %s", 
-          m_penTarget->GetName(), m_penEasyTarget->GetName());
+          (const char *) m_penTarget->GetName(), (const char *) m_penEasyTarget->GetName());
       }
     }
     ((CTString&)m_strDescription) = EnemySpawnerType_enum.NameForValue(INDEX(m_estType))
@@ -493,7 +493,7 @@ procedures:
     }
     if (m_penEasyTarget!=NULL) {
       if (!IsDerivedFromClass(m_penEasyTarget, "Enemy Base")) {
-        WarningMessage("Target '%s' is of wrong class!", m_penEasyTarget->GetName());
+        WarningMessage("Target '%s' is of wrong class!", (const char *) m_penEasyTarget->GetName());
         m_penEasyTarget = NULL;
       }
     }
