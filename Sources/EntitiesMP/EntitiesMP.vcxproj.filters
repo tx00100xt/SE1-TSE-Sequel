@@ -2816,166 +2816,169 @@
     <CustomBuild Include="..\Engine\Classes\MovableModelEntity.es">
       <Filter>Class Files\AI</Filter>
     </CustomBuild>
+    <CustomBuild Include="AirWave.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Albino.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Ant.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CameraNoView.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Catman.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Centaur.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Cerberus.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Chariot.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Crabman.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CustomEnemyCollision.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Cyborg.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="DevilAlpha.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="DevilStallion.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="DibDib.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Dragonman.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="DumDum.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="EnemyLauncher.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="EnemyProjectile.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Fishman.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Floater.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="FlyingKleer.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GhostBusterRay.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Gladiator.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Guardian.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Huanman.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Juggernaut.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Kalopsy.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Lizard.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Lurker.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Mamut.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Mamutman.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Mantaman.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Mecha.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Monkey.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Neptune.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Panda.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pipebomb.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="PlayerParenter.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="PodDemon.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Primitive.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Ram.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="RangeDamager.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="RobotDog.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Runner.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Scorpion.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ScorpSoldier.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Sentry.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Spawner.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Spider.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="SpiderMech.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Tank.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Waterman.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="WitchBride.es">
+      <Filter>Class Files\AI</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <None Include="AirWave.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Albino.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Ant.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="CameraNoView.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Catman.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Centaur.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Cerberus.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Chariot.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Crabman.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="CustomEnemyCollision.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Cyborg.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="DevilAlpha.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="DevilStallion.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="DibDib.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Dragonman.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="DumDum.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="EnemyLauncher.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="EnemyProjectile.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Fishman.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Floater.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="FlyingKleer.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="GhostBusterRay.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Gladiator.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Guardian.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Huanman.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Juggernaut.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Kalopsy.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Lizard.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Lurker.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Mamut.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Mamutman.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Mantaman.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Mecha.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Monkey.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Neptune.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Panda.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Pipebomb.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="PlayerParenter.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="PodDemon.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Primitive.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Ram.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="RangeDamager.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="RobotDog.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Runner.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Scorpion.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="ScorpSoldier.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Sentry.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Spawner.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Spider.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="SpiderMech.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Tank.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="Waterman.es">
-      <Filter>Class Files\Sequel</Filter>
-    </None>
-    <None Include="WitchBride.es">
-      <Filter>Class Files\Sequel</Filter>
+    <None Include="LightStyle.es">
+      <Filter>Class Files\Effects</Filter>
     </None>
   </ItemGroup>
 </Project>
