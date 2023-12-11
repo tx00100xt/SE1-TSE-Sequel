@@ -78,7 +78,7 @@ functions:
   virtual CTString GetPlayerKillDescription(const CTString &strPlayerName, const EDeath &eDeath)
   {
     CTString str;
-    str.PrintF(TRANS("An Orcus Behemoth turned %s into floor-pizza"), strPlayerName);
+    str.PrintF(TRANS("An Orcus Behemoth turned %s into floor-pizza"), (const char *) strPlayerName);
     return str;
   }
   
