@@ -117,7 +117,7 @@ To do this, go to the [Actions tab], select the top workflows, and then Artifact
 
 ## Known Issues:
 
-This is a beta version. When using the mod together with version 10.0 of the game, three bugs were noticed.
+This is a beta version. When using the mod together with version 1.10 of the game, three bugs were noticed.
 - The elevator does not work on the second level.
 - At the third level, the geyser next to the skull does not turn on. It is needed in order to get into the skull with the help of a jet of steam.
 - On the fourth level, in a room with variable gravity, gravity does not change after killing monsters.
