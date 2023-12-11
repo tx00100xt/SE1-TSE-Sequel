@@ -602,7 +602,7 @@ functions:
       m_strDescription.PrintF("%s,%s undestroyable", (CTString&)m_fnModel.FileName(), (CTString&)m_fnTexture.FileName());
     } else {
       m_strDescription.PrintF("%s,%s -> %s", (CTString&)m_fnModel.FileName(), (CTString&)m_fnTexture.FileName(),
-        m_penDestruction->GetName());
+        (const char *) m_penDestruction->GetName());
     }*/
 
     /*m_iMinModelOpacity = Clamp(m_iMinModelOpacity, (INDEX)0, (INDEX)255);
@@ -689,7 +689,7 @@ procedures:
         
     // check your destruction pointer
     /*if (m_penDestruction!=NULL && !IsOfClass(m_penDestruction, "ModelDestruction")) {
-      WarningMessage("Destruction '%s' is wrong class!", m_penDestruction->GetName());
+      WarningMessage("Destruction '%s' is wrong class!", (const char *) m_penDestruction->GetName());
       m_penDestruction=NULL;
     }*/
 

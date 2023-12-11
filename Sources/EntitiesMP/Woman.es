@@ -307,7 +307,7 @@ functions:
     CAttachmentModelObject *pamo = GetModelObject()->AddAttachmentModel(WOMAN_ATTACHMENT_KAMIKAZE);
 
     if (pamo == NULL) {
-      FatalError("Cannot attach enemy model to a Woman (%s)", GetName());
+      FatalError("Cannot attach enemy model to a Woman (%s)", (const char *) GetName());
       return;
     }
 
