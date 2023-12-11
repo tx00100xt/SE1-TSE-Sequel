@@ -613,7 +613,7 @@ procedures:
     m_fLastFOV = m_fFOV;
 
     if( m_penTarget!=NULL && !IsOfClass( m_penTarget, "Camera Marker")) {
-      WarningMessage( "Entity '%s' is not of Camera Marker class!", (const char *)m_penTarget);
+      WarningMessage( "Entity '%s' is not of Camera Marker class!", (const char *) m_penTarget->GetName());
       m_penTarget = NULL;
     }
 
