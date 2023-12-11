@@ -1,0 +1,19 @@
+TEXTURE_DIM 2 2
+TRANSFORM 1 0 0 0 1 0 0 0 1
+SIZE 0.01
+MAX_SHADOW 0
+HI_QUALITY YES
+
+DIRECTORY ModelsF\NextEncounter\Items\Key_Atlantis\
+MIP_MODELS 1
+ Key_Atlantis.fbx
+
+ANIM_START
+
+DIRECTORY ModelsF\NextEncounter\Items\Key_Atlantis\
+ANIMATION Default
+SPEED 0.1
+ Key_Atlantis.fbx
+
+ANIM_END
+END

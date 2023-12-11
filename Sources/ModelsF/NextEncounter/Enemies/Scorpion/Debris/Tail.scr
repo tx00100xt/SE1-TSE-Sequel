@@ -1,0 +1,19 @@
+TEXTURE_DIM 2 2
+TRANSFORM 1 0 0 0 0 1 0 -1 0
+SIZE 0.01
+MAX_SHADOW 0
+HI_QUALITY YES
+NO_BONE_TRIANGLES
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Scorpion\Debris\
+MIP_MODELS 1
+ Tail.fbx
+
+ANIM_START
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Scorpion\Debris\
+SKELETAL_ANIMATION Scorpions Armature|Scorpions_idle1Source
+SOURCE_FILE Tail.fbx
+
+ANIM_END
+END

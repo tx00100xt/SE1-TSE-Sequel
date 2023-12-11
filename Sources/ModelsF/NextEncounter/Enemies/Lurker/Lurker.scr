@@ -1,0 +1,41 @@
+TEXTURE_DIM 2 2
+TRANSFORM -1 0 0 0 0 1 0 1 0
+SIZE 0.01
+MAX_SHADOW 0
+HI_QUALITY YES
+NO_BONE_TRIANGLES
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Lurker\
+MIP_MODELS 1
+ Lurker.fbx
+
+ANIM_START
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Lurker\
+SKELETAL_ANIMATION Idle
+SOURCE_FILE Lurker.fbx
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Lurker\Animations\
+SKELETAL_ANIMATION Run
+SOURCE_FILE Run.fbx
+
+SKELETAL_ANIMATION Walk
+SOURCE_FILE Walk.fbx
+
+SKELETAL_ANIMATION AttackLaser
+SOURCE_FILE AttackLaser.fbx
+
+SKELETAL_ANIMATION Melee
+SOURCE_FILE Melee.fbx
+
+SKELETAL_ANIMATION WoundBackward
+SOURCE_FILE WoundBackward.fbx
+
+SKELETAL_ANIMATION WoundForward
+SOURCE_FILE WoundForward.fbx
+
+SKELETAL_ANIMATION Death
+SOURCE_FILE Death.fbx
+
+ANIM_END
+END

@@ -1,0 +1,23 @@
+TEXTURE_DIM 2 2
+TRANSFORM -1 0 0 0 0 1 0 1 0
+SIZE 0.01
+MAX_SHADOW 0
+HI_QUALITY YES
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Tweedle\
+MIP_MODELS 1
+ Propeller.fbx
+
+ANIM_START
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Tweedle\
+ANIMATION Default
+SPEED 0.1
+ Propeller.fbx
+
+SKELETAL_ANIMATION Spin
+DURATION 0.2
+SOURCE_FILE Spin.fbx
+
+ANIM_END
+END

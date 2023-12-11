@@ -1,0 +1,65 @@
+TEXTURE_DIM 2 2
+TRANSFORM -1 0 0 0 1 0 0 0 -1
+SIZE 1
+MAX_SHADOW 0
+HI_QUALITY YES
+
+DIRECTORY ModelsMP\Enemies\SS2\Primitive\
+MIP_MODELS 1
+ Primitive.fbx
+
+ANIM_START
+
+DIRECTORY ModelsMP\Enemies\SS2\Primitive\Animations\
+SKELETAL_ANIMATION Death_Back
+DURATION 0.75
+SOURCE_FILE Death_Back.fbx
+
+SKELETAL_ANIMATION Death_Front
+DURATION 0.75
+SOURCE_FILE Death_Front.fbx
+
+SKELETAL_ANIMATION Death_Giant
+SOURCE_FILE Death_Giant.fbx
+
+DIRECTORY ModelsMP\Enemies\SS2\Primitive\
+SKELETAL_ANIMATION Idle_NoShield
+SOURCE_FILE Primitive.fbx
+
+DIRECTORY ModelsMP\Enemies\SS2\Primitive\Animations\
+SKELETAL_ANIMATION Idle_Shield
+SOURCE_FILE Idle_Shield.fbx
+
+SKELETAL_ANIMATION Melee_Giant
+DURATION 1
+SOURCE_FILE Melee_Giant.fbx
+
+SKELETAL_ANIMATION Melee_NoShield
+SOURCE_FILE Melee_NoShield.fbx
+
+SKELETAL_ANIMATION Melee_Shield
+SOURCE_FILE Melee_Shield.fbx
+
+SKELETAL_ANIMATION Run_NoShield2
+SOURCE_FILE Run_NoShield.fbx
+
+SKELETAL_ANIMATION RunAttack_NoShield2
+SOURCE_FILE RunAttack_NoShield.fbx
+
+SKELETAL_ANIMATION ThrowShield
+SOURCE_FILE ThrowShield.fbx
+
+SKELETAL_ANIMATION Walk_Giant2
+SOURCE_FILE Walk_Giant.fbx
+
+SKELETAL_ANIMATION Walk_NoShield2
+SOURCE_FILE Walk_NoShield.fbx
+
+SKELETAL_ANIMATION Walk_Shield2
+SOURCE_FILE Walk_Shield.fbx
+
+SKELETAL_ANIMATION Wound
+SOURCE_FILE Wound.fbx
+
+ANIM_END
+END

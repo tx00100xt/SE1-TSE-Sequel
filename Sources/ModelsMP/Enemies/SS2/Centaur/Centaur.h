@@ -1,0 +1,26 @@
+// Animation names
+#define CENTAUR_ANIM_DEATH_RUN 0
+#define CENTAUR_ANIM_DEATH_STAND 1
+#define CENTAUR_ANIM_FIRE 2
+#define CENTAUR_ANIM_IDLE 3
+#define CENTAUR_ANIM_MELEE 4
+#define CENTAUR_ANIM_RUN2 5
+#define CENTAUR_ANIM_WALK2 6
+#define CENTAUR_ANIM_WOUND01 7
+
+// Color names
+
+// Patch names
+
+// Names of collision boxes
+#define CENTAUR_COLLISION_BOX_PART_NAME 0
+#define CENTAUR_COLLISION_BOX_DEATH 1
+
+// Attaching position names
+#define CENTAUR_ATTACHMENT_BOW 0
+#define CENTAUR_ATTACHMENT_HAIR 1
+#define CENTAUR_ATTACHMENT_QUIVER 2
+#define CENTAUR_ATTACHMENT_SHOULDERPAD 3
+#define CENTAUR_ATTACHMENT_TAIL 4
+
+// Sound names

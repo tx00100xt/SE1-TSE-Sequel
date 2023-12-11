@@ -1,0 +1,40 @@
+TEXTURE_DIM 2 2
+TRANSFORM -1 0 0 0 0 1 0 1 0
+SIZE 0.01
+MAX_SHADOW 0
+HI_QUALITY YES
+NO_BONE_TRIANGLES
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Monkey\Animations\
+MIP_MODELS 1
+ Idle.fbx
+
+ANIM_START
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Monkey\Animations\
+SKELETAL_ANIMATION Idle
+SOURCE_FILE Idle.fbx
+
+SKELETAL_ANIMATION Run
+SOURCE_FILE Run.fbx
+
+SKELETAL_ANIMATION Attack
+SOURCE_FILE Attack.fbx
+
+SKELETAL_ANIMATION AttackRun
+SOURCE_FILE AttackRun.fbx
+
+SKELETAL_ANIMATION WoundBackward
+SOURCE_FILE WoundBackward.fbx
+
+SKELETAL_ANIMATION WoundForward
+SOURCE_FILE WoundForward.fbx
+
+SKELETAL_ANIMATION DeathBackward
+SOURCE_FILE DeathBackward.fbx
+
+SKELETAL_ANIMATION DeathForward
+SOURCE_FILE DeathForward.fbx
+
+ANIM_END
+END

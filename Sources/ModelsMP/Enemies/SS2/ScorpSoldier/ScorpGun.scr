@@ -1,0 +1,19 @@
+TEXTURE_DIM 2 2
+TRANSFORM 1 0 0 0 1 0 0 0 1
+SIZE 1
+MAX_SHADOW 0
+HI_QUALITY YES
+
+DIRECTORY ModelsMP\Enemies\SS2\ScorpSoldier\
+MIP_MODELS 1
+ ScorpGun.obj
+
+ANIM_START
+
+DIRECTORY ModelsMP\Enemies\SS2\ScorpSoldier\
+ANIMATION Default
+SPEED 0.1
+ ScorpGun.obj
+
+ANIM_END
+END

@@ -1,0 +1,42 @@
+TEXTURE_DIM 2 2
+TRANSFORM -1 0 0 0 0 1 0 1 0
+SIZE 0.01
+MAX_SHADOW 0
+HI_QUALITY YES
+NO_BONE_TRIANGLES
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Guardian\
+MIP_MODELS 1
+ Guardian.fbx
+
+ANIM_START
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Guardian\Animations\
+SKELETAL_ANIMATION Default
+SOURCE_FILE Default.fbx
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Guardian\
+SKELETAL_ANIMATION Idle
+SOURCE_FILE Guardian.fbx
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Guardian\Animations\
+SKELETAL_ANIMATION Walk
+SOURCE_FILE Walk.fbx
+
+SKELETAL_ANIMATION Fire
+SOURCE_FILE Fire.fbx
+
+SKELETAL_ANIMATION Laugh
+SOURCE_FILE Laugh.fbx
+
+SKELETAL_ANIMATION WoundBackward
+SOURCE_FILE WoundBackward.fbx
+
+SKELETAL_ANIMATION WoundForward
+SOURCE_FILE WoundForward.fbx
+
+SKELETAL_ANIMATION Death
+SOURCE_FILE Death.fbx
+
+ANIM_END
+END

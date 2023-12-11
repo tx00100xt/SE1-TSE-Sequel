@@ -1,0 +1,28 @@
+// Animation names
+#define FISHMAN2_ANIM_DEFAULT 0
+#define FISHMAN2_ANIM_IDLE 1
+#define FISHMAN2_ANIM_WALK 2
+#define FISHMAN2_ANIM_RUN 3
+#define FISHMAN2_ANIM_HIT 4
+#define FISHMAN2_ANIM_FIRE 5
+#define FISHMAN2_ANIM_WOUND 6
+#define FISHMAN2_ANIM_DEATH 7
+#define FISHMAN2_ANIM_SWIMIDLE 8
+#define FISHMAN2_ANIM_SWIMWALK 9
+#define FISHMAN2_ANIM_SWIMHIT 10
+#define FISHMAN2_ANIM_SWIMFIRE 11
+#define FISHMAN2_ANIM_SWIMWOUND 12
+#define FISHMAN2_ANIM_SWIMDEATH 13
+
+// Color names
+
+// Patch names
+
+// Names of collision boxes
+#define FISHMAN2_COLLISION_BOX_GROUND 0
+#define FISHMAN2_COLLISION_BOX_SWIM 1
+
+// Attaching position names
+#define FISHMAN2_ATTACHMENT_SPEAR 0
+
+// Sound names

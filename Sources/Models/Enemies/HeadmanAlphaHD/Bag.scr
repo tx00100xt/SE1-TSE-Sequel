@@ -1,0 +1,26 @@
+;******* Creation settings
+TEXTURE_DIM 2.0 2.0
+SIZE 0.3
+MAX_SHADOW 0
+HI_QUALITY YES
+FLAT NO
+HALF_FLAT NO
+STRETCH_DETAIL NO
+
+;******* Mip models
+DIRECTORY Models\Enemies\Headman\ForMod
+MIP_MODELS 1
+    Bag.obj
+
+ANIM_START
+;******* Start of animation block
+
+DIRECTORY Models\Enemies\Headman\ForMod
+ANIMATION Default
+SPEED 0.1
+    Bag.obj
+
+;******* End of animation block
+ANIM_END
+
+END

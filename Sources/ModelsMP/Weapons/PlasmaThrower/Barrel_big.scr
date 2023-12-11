@@ -1,0 +1,38 @@
+;******* Creation settings
+TEXTURE_DIM 2.0 2.0
+SIZE 1.0
+MAX_SHADOW 0
+HI_QUALITY YES
+FLAT NO
+HALF_FLAT NO
+STRETCH_DETAIL NO
+
+;******* Mip models
+DIRECTORY Models\Warped\Laser\
+MIP_MODELS 1
+    Barrelbig.lwo
+
+IMPORT_MAPPING
+    Barrelbig.lwo
+
+ANIM_START
+;******* Start of animation block
+
+DIRECTORY Models\Warped\Laser\
+ANIMATION Default
+SPEED 0.1
+    Barrelbig.lwo
+
+DIRECTORY Models\Warped\Laser\Frames\BarrelBig
+ANIMATION Fire
+SPEED 0.1
+    Barrelbig_F01.lwo
+    Barrelbig_F02.lwo
+    Barrelbig_F03.lwo
+    Barrelbig_F04.lwo
+    Barrelbig.lwo
+
+;******* End of animation block
+ANIM_END
+
+END

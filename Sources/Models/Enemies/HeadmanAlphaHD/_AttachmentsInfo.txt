@@ -1,0 +1,47 @@
+* = vanilla resource (Models\Enemies\Headman)
+
+N.	NAME				MDL				TEX
+
+==== BOMBERMAN ====
+0	HEAD				--				--
+1	ROCKET_LAUNCHER			--				--
+2	CHAINSAW			--				--
+3	BOMB_RIGHT_HAND			--				--
+4	BOMB_LEFT_HAND			--				--
+5	NECK_STICK			Stick.mdl			Stick.tex
+6	BOMBER_HEAD			Head.mdl*			Head.tex*
+7	BOMBER_BAG			Bag.mdl				Bag.tex
+8	NECK_SAW			--				--
+
+==== FIRECRACKER ====
+0	HEAD				Head.mdl*			FirecrackerHead.tex*
+1	ROCKET_LAUNCHER			--				--
+2	CHAINSAW			Chainsaw.mdl			Chainsaw.tex
+3	BOMB_RIGHT_HAND			--				--
+4	BOMB_LEFT_HAND			--				--
+5	NECK_STICK			Stick.mdl			Stick.tex
+6	BOMBER_HEAD			--				--
+7	BOMBER_BAG			--				--
+8	NECK_SAW			--				--
+
+==== KAMIKAZE ====
+0	HEAD				--				--
+1	ROCKET_LAUNCHER			--				--
+2	CHAINSAW			--				--
+3	BOMB_RIGHT_HAND			Bomb.mdl*			Bomb.tex*		Projectile Folder
+4	BOMB_LEFT_HAND			Bomb.mdl*			Bomb.tex*		Projectile Folder
+5	NECK_STICK			--				--
+6	BOMBER_HEAD			--				--
+7	BOMBER_BAG			--				--
+8	NECK_SAW			--				--
+
+==== ROCKETMAN ====
+0	HEAD				Head.mdl*			Head.tex*
+1	ROCKET_LAUNCHER			RocketLauncher.mdl		RocketLauncher.tex
+2	CHAINSAW			--				--
+3	BOMB_RIGHT_HAND			--				--
+4	BOMB_LEFT_HAND			--				--
+5	NECK_STICK			Stick.mdl			Stick.tex
+6	BOMBER_HEAD			--				--
+7	BOMBER_BAG			--				--
+8	NECK_SAW			Saw.mdl				Saw.tex

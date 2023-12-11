@@ -1,0 +1,40 @@
+;******* Creation settings
+TEXTURE_DIM 3.5 3.5
+SIZE 1.0
+MAX_SHADOW 0
+HI_QUALITY YES
+FLAT NO
+HALF_FLAT YES
+STRETCH_DETAIL NO
+
+;******* Mip models
+DIRECTORY Models\Weapons\LanThief_Laser\
+MIP_MODELS 1
+    Gas_cloud.lwo
+
+ANIM_START
+;******* Start of animation block
+
+DIRECTORY Models\Weapons\LanThief_Laser\
+ANIMATION Default
+SPEED 0.1
+    Gas_cloud.lwo
+
+DIRECTORY Models\Weapons\LanThief_Laser\Frames
+ANIMATION up
+SPEED 1.0
+    f_00.lwo
+    f_01.lwo
+    f_02.lwo
+
+DIRECTORY Models\Weapons\LanThief_Laser\Frames
+ANIMATION down
+SPEED 4.0
+    f_02.lwo
+    f_01.lwo
+    f_00.lwo
+
+;******* End of animation block
+ANIM_END
+
+END

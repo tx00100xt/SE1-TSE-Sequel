@@ -1,0 +1,19 @@
+TEXTURE_DIM 2 2
+TRANSFORM -1 0 0 0 1 0 0 0 -1
+SIZE 1
+MAX_SHADOW 0
+HI_QUALITY YES
+
+DIRECTORY ModelsF\Weapons\Devastator\
+MIP_MODELS 1
+ Body.obj
+
+ANIM_START
+
+DIRECTORY ModelsF\Weapons\Devastator\
+ANIMATION Default
+SPEED 0.1
+ Body.obj
+
+ANIM_END
+END

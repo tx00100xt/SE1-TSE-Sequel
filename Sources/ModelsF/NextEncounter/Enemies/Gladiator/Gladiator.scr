@@ -1,0 +1,47 @@
+TEXTURE_DIM 2 2
+TRANSFORM -1 0 0 0 0 1 0 1 0
+SIZE 0.01
+MAX_SHADOW 0
+HI_QUALITY YES
+NO_BONE_TRIANGLES
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Gladiator\
+MIP_MODELS 1
+ Gladiator.fbx
+
+ANIM_START
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Gladiator\
+SKELETAL_ANIMATION Idle
+SOURCE_FILE Gladiator.fbx
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Gladiator\Animations\
+SKELETAL_ANIMATION Run
+SOURCE_FILE Run.fbx
+
+SKELETAL_ANIMATION Walk
+SOURCE_FILE Walk.fbx
+
+SKELETAL_ANIMATION Attack
+SOURCE_FILE Attack.fbx
+
+SKELETAL_ANIMATION AttackRun
+SOURCE_FILE AttackRun.fbx
+
+SKELETAL_ANIMATION AttackRecharge
+SOURCE_FILE AttackRecharge.fbx
+
+SKELETAL_ANIMATION WoundBackward
+SOURCE_FILE WoundBackward.fbx
+
+SKELETAL_ANIMATION WoundForward
+SOURCE_FILE WoundForward.fbx
+
+SKELETAL_ANIMATION Death1
+SOURCE_FILE Death1.fbx
+
+SKELETAL_ANIMATION Death2
+SOURCE_FILE Death2.fbx
+
+ANIM_END
+END

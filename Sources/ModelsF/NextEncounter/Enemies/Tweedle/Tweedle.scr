@@ -1,0 +1,28 @@
+TEXTURE_DIM 2 2
+TRANSFORM 1 0 0 0 1 0 0 0 1
+SIZE 1
+MAX_SHADOW 0
+HI_QUALITY YES
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Tweedle\
+MIP_MODELS 1
+ Tweedle.fbx
+
+ANIM_START
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Tweedle\
+SKELETAL_ANIMATION Idle
+SOURCE_FILE Tweedle.fbx
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Tweedle\Animations\
+SKELETAL_ANIMATION Run
+SOURCE_FILE Run.fbx
+
+SKELETAL_ANIMATION Attack
+SOURCE_FILE Attack.fbx
+
+SKELETAL_ANIMATION Wound
+SOURCE_FILE Wound.fbx
+
+ANIM_END
+END

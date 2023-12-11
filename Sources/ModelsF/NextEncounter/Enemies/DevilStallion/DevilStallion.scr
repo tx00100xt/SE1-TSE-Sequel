@@ -1,0 +1,69 @@
+TEXTURE_DIM 2 2
+TRANSFORM -1 0 0 0 0 1 0 1 0
+SIZE 0.01
+MAX_SHADOW 0
+HI_QUALITY YES
+NO_BONE_TRIANGLES
+
+DIRECTORY ModelsF\NextEncounter\Enemies\DevilStallion\
+MIP_MODELS 1
+ DevilStallion.fbx
+
+ANIM_START
+
+DIRECTORY ModelsF\NextEncounter\Enemies\DevilStallion\
+SKELETAL_ANIMATION FlyIdle
+SOURCE_FILE DevilStallion.fbx
+
+DIRECTORY ModelsF\NextEncounter\Enemies\DevilStallion\Animations\
+SKELETAL_ANIMATION FlyAttack
+SOURCE_FILE FlyAttack.fbx
+
+SKELETAL_ANIMATION FlyBreath
+SOURCE_FILE FlyBreath.fbx
+
+SKELETAL_ANIMATION FlyWoundBackward
+SOURCE_FILE FlyWoundBackwardfbx.fbx
+
+SKELETAL_ANIMATION FlyWoundForward
+SOURCE_FILE FlyWoundForward.fbx
+
+SKELETAL_ANIMATION FlyDeath1
+SOURCE_FILE FlyDeath1.fbx
+
+SKELETAL_ANIMATION FlyDeath2
+SOURCE_FILE FlyDeath2.fbx
+
+SKELETAL_ANIMATION Land
+SOURCE_FILE Land.fbx
+
+SKELETAL_ANIMATION GroundIdle
+DURATION 1.6666
+SOURCE_FILE GroundIdle.fbx
+
+SKELETAL_ANIMATION GroundRun
+SOURCE_FILE GroundRun.fbx
+
+SKELETAL_ANIMATION GroundWalk
+SOURCE_FILE GroundWalk.fbx
+
+SKELETAL_ANIMATION GroundAttack
+SOURCE_FILE GroundAttack.fbx
+
+SKELETAL_ANIMATION GroundBreath
+SOURCE_FILE GroundBreath.fbx
+
+SKELETAL_ANIMATION GroundWoundBackward
+SOURCE_FILE GroundWoundBackward.fbx
+
+SKELETAL_ANIMATION GroundWoundForward
+SOURCE_FILE GroundWoundForward.fbx
+
+SKELETAL_ANIMATION GroundDeath
+SOURCE_FILE GroundDeath.fbx
+
+SKELETAL_ANIMATION Launch
+SOURCE_FILE Launch.fbx
+
+ANIM_END
+END

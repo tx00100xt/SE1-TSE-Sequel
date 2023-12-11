@@ -1,0 +1,13 @@
+mech_defender
+
+idle_01 (0-100)
+idle_02 (105-175)
+walk (180-220)
+run (225-245)
+skillstart (250-265)
+attack (270-285)
+skillend (290-305)
+damage_01 (310-320)
+damage_02 (325-340)
+death_01 (345-445)
+death_02 (450-485)

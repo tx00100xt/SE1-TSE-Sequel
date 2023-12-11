@@ -1,0 +1,18 @@
+// Animation names
+#define WITCHBRIDENOTENT_ANIM_CHANTING 0
+#define WITCHBRIDENOTENT_ANIM_DEATH 1
+#define WITCHBRIDENOTENT_ANIM_IDLE 2
+#define WITCHBRIDENOTENT_ANIM_TELEPORT 3
+#define WITCHBRIDENOTENT_ANIM_WOUND_MM 4
+
+// Color names
+
+// Patch names
+
+// Names of collision boxes
+#define WITCHBRIDENOTENT_COLLISION_BOX_PART_NAME 0
+
+// Attaching position names
+#define WITCHBRIDENOTENT_ATTACHMENT_SPIDERLEGS 0
+
+// Sound names

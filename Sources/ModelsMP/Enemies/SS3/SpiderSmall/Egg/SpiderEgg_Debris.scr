@@ -1,0 +1,19 @@
+TEXTURE_DIM 2 2
+TRANSFORM 1 0 0 0 1 0 0 0 1
+SIZE 1
+MAX_SHADOW 0
+HI_QUALITY YES
+
+DIRECTORY ModelsMP\Enemies\SS3\SpiderSmall\Egg\
+MIP_MODELS 1
+ SpiderEgg_Debris.fbx
+
+ANIM_START
+
+DIRECTORY ModelsMP\Enemies\SS3\SpiderSmall\Egg\
+ANIMATION Default
+SPEED 0.1
+ SpiderEgg_Debris.fbx
+
+ANIM_END
+END

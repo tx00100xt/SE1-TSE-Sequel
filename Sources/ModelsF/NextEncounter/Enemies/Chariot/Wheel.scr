@@ -1,0 +1,34 @@
+TEXTURE_DIM 2 2
+TRANSFORM 1 0 0 0 1 0 0 0 1
+SIZE 1.25
+MAX_SHADOW 0
+HI_QUALITY YES
+NO_BONE_TRIANGLES
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Chariot\
+MIP_MODELS 1
+ Wheel.fbx
+
+ANIM_START
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Chariot\
+SKELETAL_ANIMATION Idle
+SOURCE_FILE Wheel.fbx
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Chariot\Animations\
+SKELETAL_ANIMATION RunFor
+SOURCE_FILE WheelRun.fbx
+
+SKELETAL_ANIMATION Walkfor
+DURATION 2
+SOURCE_FILE WheelRun.fbx
+
+SKELETAL_ANIMATION RunBack
+SOURCE_FILE WheelRuntheotherway.fbx
+
+SKELETAL_ANIMATION WalkBack
+DURATION 2
+SOURCE_FILE WheelRuntheotherway.fbx
+
+ANIM_END
+END

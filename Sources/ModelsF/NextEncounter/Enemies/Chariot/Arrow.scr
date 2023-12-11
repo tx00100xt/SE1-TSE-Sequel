@@ -1,0 +1,19 @@
+TEXTURE_DIM 2 2
+TRANSFORM 1 0 0 0 0 -1 0 1 0
+SIZE 0.1
+MAX_SHADOW 0
+HI_QUALITY YES
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Chariot\
+MIP_MODELS 1
+ Arrow.fbx
+
+ANIM_START
+
+DIRECTORY ModelsF\NextEncounter\Enemies\Chariot\
+ANIMATION Default
+SPEED 0.1
+ Arrow.fbx
+
+ANIM_END
+END

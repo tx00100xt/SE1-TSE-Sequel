@@ -1,0 +1,13 @@
+mech
+
+idle_01 (0-40)
+idle_02 (45-115)
+walk (120-148)
+run (153-171)
+skillstart (176-191)
+attack (196-206)
+skillend (211-226)
+damage_01 (231-241)
+damage_02 (246-266)
+death_01 (271-316)
+death_02 (321-339)
