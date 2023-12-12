@@ -1299,7 +1299,7 @@ extern void SetupCompModel_t(const CTString &strName)
 
   } 
   
-  // More 128 if else
+  // More if else ( fatal error C1061: compiler limit: blocks nested too deeply)
   // Let's divide it in half
 
   if (strName=="Neptune") {
@@ -2248,8 +2248,12 @@ extern void SetupCompModel_t(const CTString &strName)
     _bHasFloor = TRUE;
     _fFloorY = -1.0f;
 
-  } else {
+  } 
+
+  if(!_bHasFloor) {
     ThrowF_t(TRANS("Unknown model '%s'"), (const char *) strName);
+  } else {
+    _bHasFloor = FALSE;
   }
 }
 
