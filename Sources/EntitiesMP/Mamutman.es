@@ -18,6 +18,13 @@ enum mmType {
 };
 
 %{
+#ifdef PLATFORM_UNIX
+#define _WARNING(r) return TRUE;
+#else
+#define _WARNING(r) WarningMessage(r); \
+          return FALSE;
+#endif
+
 #define STRETCH_MONK   2.0f
 #define STRETCH_CARDINAL 2.5f
   
@@ -119,9 +126,9 @@ functions:
 
   BOOL DoSafetyChecks(void) {
     if (m_penTeleportMarker==NULL) {
-        WarningMessage( "No valid Teleport Marker for Mamutman! Destroying Mamutman...");
-        return FALSE;
+        _WARNING("No valid Teleport Marker for Mamutman! Destroying Mamutman...");
     }
+    return TRUE;
   }
     
   // describe how this enemy killed player
