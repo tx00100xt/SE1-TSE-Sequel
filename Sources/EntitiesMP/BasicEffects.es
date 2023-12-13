@@ -118,6 +118,9 @@ event ESpawnEffect {
 %{
 void CBasicEffect_OnPrecache(CDLLEntityClass *pdec, INDEX iUser) 
 {
+  // Fix precache
+  pdec->PrecacheTexture(TEXTURE_BULLET_ENERGY);
+
   switch ((BasicEffectType)iUser) {
   case BET_ROCKET:
   case BET_ROCKET_PLANE:

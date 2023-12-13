@@ -189,6 +189,13 @@ void CProjectile_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
   pdec->PrecacheTexture(TEX_SPEC_MEDIUM);
   pdec->PrecacheTexture(TEX_SPEC_STRONG);
 
+  // fix precache
+  pdec->PrecacheSound(SOUND_ELECTRIC_FLYING);
+  pdec->PrecacheModel(MODEL_SPIDER_WEB     );
+  pdec->PrecacheTexture(TEXTURE_SPIDER_WEB );
+  pdec->PrecacheSound(SOUND_SLIME_FLYING   );
+  pdec->PrecacheTexture(TEXTURE_GREEN_PLASMA_BALL);
+
   switch ((ProjectileType)iUser) {
   case PRT_ROCKET                :
   case PRT_WALKER_ROCKET         :
@@ -487,7 +494,7 @@ void CProjectile_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
     pdec->PrecacheTexture(TEXTURE_EYEMAN_ACID);
     break;
   case PRT_BEAST_E_PROJECTILE:
-    pdec->PrecacheSound(SOUND_ELECTRIC_FLYING  );
+    //pdec->PrecacheSound(SOUND_ELECTRIC_FLYING  );
     pdec->PrecacheModel(MODEL_LARVA_PLASMA);
     pdec->PrecacheTexture(TEXTURE_LARVA_PLASMA);
     pdec->PrecacheClass(CLASS_BASIC_EFFECT, BET_LIGHT_CANNON);    
