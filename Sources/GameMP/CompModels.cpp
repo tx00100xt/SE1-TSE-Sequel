@@ -723,6 +723,81 @@ extern void SetupCompModel_t(const CTString &strName)
 
     _bHasFloor = TRUE;
 
+  } else if (strName=="CyborgMedium") {
+    pmo->SetData_t(CTFILENAME("AREP\\Models\\Cyborg2\\Cyborg.mdl"));
+    pmo->PlayAnim(CYBORG_ANIM_WALK01, AOF_LOOPING);
+    pmo->mo_toTexture.SetData_t(CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+    _plModel = CPlacement3D(FLOAT3D(0.0f,-1.25f,-3.0), ANGLE3D(-210,0,0));
+    pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
+  
+    AddAttachment_t(pmo, CYBORG_ATTACHMENT_ASS, 
+      CTFILENAME("AREP\\Models\\Cyborg2\\AssHole.mdl"), 0,
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+    pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
+    pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
+    AddAttachment_t(pmo, CYBORG_ATTACHMENT_TORSO, 
+      CTFILENAME("AREP\\Models\\Cyborg2\\Torso.mdl"), 0,
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+    pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
+    pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
+    AddAttachment_t(pmo, CYBORG_ATTACHMENT_HEAD, 
+      CTFILENAME("AREP\\Models\\Cyborg2\\Head.mdl"), 0,
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+    pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
+    pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
+    AddAttachment_t(pmo, CYBORG_ATTACHMENT_RIGHTUPPERARM, 
+      CTFILENAME("AREP\\Models\\Cyborg2\\RightUpperArm.mdl"), 0,
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+    pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
+    pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
+    AddAttachment_t(pmo, CYBORG_ATTACHMENT_LEFTUPPERARM, 
+      CTFILENAME("AREP\\Models\\Cyborg2\\LeftUpperArm.mdl"), 0,
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+    pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
+    pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
+    AddAttachment_t(pmo, CYBORG_ATTACHMENT_RIGHTLOWERARM, 
+      CTFILENAME("AREP\\Models\\Cyborg2\\RightLowerArm.mdl"), 0,
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+    pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
+    pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
+    AddAttachment_t(pmo, CYBORG_ATTACHMENT_LEFTLOWERARM, 
+      CTFILENAME("AREP\\Models\\Cyborg2\\LeftLowerArm.mdl"), 0,
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+    pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
+    pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
+    AddAttachment_t(pmo, CYBORG_ATTACHMENT_RIGHTUPPERLEG, 
+      CTFILENAME("AREP\\Models\\Cyborg2\\RightUpperLeg.mdl"), 0,
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+    pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
+    pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
+    AddAttachment_t(pmo, CYBORG_ATTACHMENT_RIGHTLOWERLEG, 
+      CTFILENAME("AREP\\Models\\Cyborg2\\RightLowerLeg.mdl"), 0,
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+    pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
+    pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
+    AddAttachment_t(pmo, CYBORG_ATTACHMENT_LEFTUPPERLEG, 
+      CTFILENAME("AREP\\Models\\Cyborg2\\LeftUpperLeg.mdl"), 0,
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+    pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
+    pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
+    AddAttachment_t(pmo, CYBORG_ATTACHMENT_LEFTLOWERLEG, 
+      CTFILENAME("AREP\\Models\\Cyborg2\\LeftLowerLeg.mdl"), 0,
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+    pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
+    pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
+    AddAttachment_t(pmo, CYBORG_ATTACHMENT_FOOTRIGHT, 
+      CTFILENAME("AREP\\Models\\Cyborg2\\Foot.mdl"), 0,
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+    pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
+    pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
+    AddAttachment_t(pmo, CYBORG_ATTACHMENT_FOOTLEFT, 
+      CTFILENAME("AREP\\Models\\Cyborg2\\Foot.mdl"), 0,
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+    pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
+    pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
+
+    _bHasFloor = TRUE;
+
   } else if (strName=="CyborgBig") {
     pmo->SetData_t(CTFILENAME("AREP\\Models\\Cyborg2\\Cyborg.mdl"));
     pmo->PlayAnim(CYBORG_ANIM_WALK01, AOF_LOOPING);
