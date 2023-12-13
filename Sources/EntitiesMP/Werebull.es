@@ -111,12 +111,13 @@ functions:
   void Precache(void) {
     CEnemyBase::Precache();
 
+    PrecacheSound(SOUND_KICKHORN);
+    PrecacheSound(SOUND_IMPACT  );
+
     if (m_beFene==BUE_FE)
     {
     PrecacheSound(SOUND_IDLE    );
     PrecacheSound(SOUND_SIGHT   );
-    PrecacheSound(SOUND_KICKHORN);
-    PrecacheSound(SOUND_IMPACT  );
     PrecacheSound(SOUND_DEATH   );
     PrecacheSound(SOUND_RUN     );
 	PrecacheTexture(TEXTURE_WEREBULL_S_FLESH);
