@@ -748,7 +748,7 @@ jobs:
             cd ${{github.workspace}}
             echo "*** Copy Sequel Libraries ***"
             echo "cp -vfr Sources/build/Debug/*.so ppc64le/SamTSE/Mods/Sequel/Bin"   
-            cp -vfr SE1-ParametricParticles/Sources/build/Debug/libParametricParticlesMP.so riscv64/SamTSE/Mods/Sequel/Bin
+            cp -vfr SE1-ParametricParticles/Sources/build/Debug/libParametricParticlesMP.so ppc64le/SamTSE/Mods/Sequel/Bin
             cp -vfr Sources/build/Debug/libEntitiesMP.so ppc64le/SamTSE/Mods/Sequel/Bin
             cp -vfr Sources/build/Debug/libGameMP.so ppc64le/SamTSE/Mods/Sequel/Bin
 
@@ -858,7 +858,7 @@ jobs:
             cd ${{github.workspace}}
             echo "*** Copy Sequel Libraries ***"
             echo "cp -vfr Sources/build/Debug/*.so s390x/SamTSE/Mods/Sequel/Bin"
-            cp -vfr SE1-ParametricParticles/Sources/build/Debug/libParametricParticlesMP.so riscv64/SamTSE/Mods/Sequel/Bin
+            cp -vfr SE1-ParametricParticles/Sources/build/Debug/libParametricParticlesMP.so s390x/SamTSE/Mods/Sequel/Bin
             cp -vfr Sources/build/Debug/libEntitiesMP.so s390x/SamTSE/Mods/Sequel/Bin
             cp -vfr Sources/build/Debug/libGameMP.so s390x/SamTSE/Mods/Sequel/Bin
 
