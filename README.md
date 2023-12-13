@@ -121,7 +121,7 @@ License
 * Serious Engine v1.10 is licensed under the GNU GPL v2 (see LICENSE file).
 
 
-[SamTSE-Sequel.tar.xz]: https://drive.google.com/file/d/1gN24j29hQUU07USmn4crTnbdv0Y7SUNJ/view?usp=sharing "Serious Sam Classic Sequel Mod"
+[SamTSE-Sequel.tar.xz]: https://drive.google.com/file/d/1mwnYPdcN9-JcfWaLMCKEJ8zKe7qEnkFt/view?usp=sharing "Serious Sam Classic Sequel Mod"
 [Visual Studio 2015 Community Edition]: https://go.microsoft.com/fwlink/?LinkId=615448&clcid=0x409 "Visual Studio 2015 Community Edition"
 [Windows 10 SDK 10.0.14393.795]: https://go.microsoft.com/fwlink/p/?LinkId=838916 "Windows 10 SDK 10.0.14393.795"
 [Actions tab]: https://github.com/tx00100xt/SE1-TSE-Sequel/actions "Download Artifacts"
