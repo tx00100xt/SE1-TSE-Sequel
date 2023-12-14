@@ -212,9 +212,7 @@ procedures:
 
     // set your appearance
     if (m_ErfChar==STR_TURRET) {
-      if (m_EeftType==EFT_FLY_GROUND_GROUND | EFT_FLY_GROUND_AIR | EFT_FLY_AIR_GROUND | EFT_FLY_AIR_AIR | EFT_FLY_ONLY) {
       m_EeftType=EFT_GROUND_ONLY;
-    }
       SetModel(MODEL_TURRET);
       SetModelMainTexture(TEXTURE_TURRET);
       // set stretch factor
@@ -242,9 +240,7 @@ procedures:
     m_fBodyParts = 8;
     m_fDamageWounded = 100000.0f;
     } else {
-      if (m_EeftType==EFT_FLY_GROUND_GROUND | EFT_FLY_GROUND_AIR | EFT_FLY_AIR_GROUND | EFT_FLY_AIR_AIR | EFT_GROUND_ONLY) {
       m_EeftType=EFT_FLY_ONLY;
-    }
       SetModel(MODEL_FLYING);
       SetModelMainTexture(TEXTURE_FLYING);
       // set stretch factor

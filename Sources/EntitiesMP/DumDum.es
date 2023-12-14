@@ -449,8 +449,7 @@ procedures:
     if (m_DumChar==DUM_DUM) {
     SetModel(MODEL_DUMDUM);
     SetModelMainTexture(TEXTURE_DUMDUM);
-      if (m_EeftType==EFT_FLY_GROUND_GROUND | EFT_FLY_GROUND_AIR | EFT_FLY_AIR_GROUND | EFT_FLY_AIR_AIR | EFT_FLY_ONLY) {
-      m_EeftType=EFT_GROUND_ONLY; }
+      m_EeftType=EFT_GROUND_ONLY;
       GetModelObject()->StretchModel(FLOAT3D(0.75f, 0.75f, 0.75f));
       ModelChangeNotify();
       m_iScore = 200;
@@ -458,8 +457,7 @@ procedures:
       SetModel(MODEL_TWEEDLE);
       SetModelMainTexture(TEXTURE_DUMDUM);
       AddAttachment(TWEEDLE_ATTACHMENT_PROPELLER, MODEL_PROPELLER, TEXTURE_DUMDUM);
-      if (m_EeftType==EFT_FLY_GROUND_GROUND | EFT_FLY_GROUND_AIR | EFT_FLY_AIR_GROUND | EFT_FLY_AIR_AIR | EFT_GROUND_ONLY) {
-      m_EeftType=EFT_FLY_ONLY; }
+      m_EeftType=EFT_FLY_ONLY;
       m_iScore = 300;
       GetModelObject()->StretchModel(FLOAT3D(1.0f, 1.0f, 1.0f));
       ModelChangeNotify();

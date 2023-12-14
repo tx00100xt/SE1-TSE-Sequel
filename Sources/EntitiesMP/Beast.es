@@ -208,7 +208,7 @@ functions:
 
   BOOL ForcesCannonballToExplode(void)
   {
-    if (m_bcVer == BTV_FE | BTV_MIX) {
+    if (m_bcVer == BTV_FE || m_bcVer == BTV_MIX) {
       return FALSE;
 	  }
     if (m_bcVer == BTV_SE) {
@@ -222,7 +222,7 @@ functions:
   {
 
     // cannonballs inflict less damage then the default
-    if (m_bcVer == BTV_FE | BTV_MIX) {
+    if (m_bcVer == BTV_FE || m_bcVer == BTV_MIX) {
       if(m_bcType==BT_BIG && dmtType==DMT_CANNONBALL)
       {
         fDamageAmmount *= 1.0f;

@@ -200,7 +200,7 @@ functions:
     }
     
     // cannonballs inflict less damage then the default
-    if(dmtType==DMT_CANNONBALL || DMT_CANNONBALL_EXPLOSION)
+    if(dmtType==DMT_CANNONBALL || dmtType==DMT_CANNONBALL_EXPLOSION)
     {
       fDamageAmmount *= 0.25f;
     }
@@ -765,9 +765,6 @@ procedures:
  *                       M  A  I  N                         *
  ************************************************************/
   Main(EVoid) {
-      if (m_EeftType==EFT_FLY_GROUND_GROUND | EFT_FLY_GROUND_AIR | EFT_FLY_AIR_GROUND | EFT_FLY_AIR_AIR | EFT_GROUND_ONLY) {
-      m_EeftType=EFT_FLY_ONLY;
-    }
     // declare yourself as a model
     InitAsModel();
     SetPhysicsFlags(EPF_MODEL_WALKING|EPF_HASLUNGS|EPF_HASGILLS);
@@ -776,7 +773,7 @@ procedures:
     SetHealth(15000.0f);
     m_fMaxHealth = 15000.0f;
     en_fDensity = 20000.0f;
-	m_EeftType=EFT_FLY_ONLY;
+    m_EeftType=EFT_FLY_ONLY;
 
     // this one is boss!
     m_bBoss = TRUE;

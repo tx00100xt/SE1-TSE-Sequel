@@ -154,7 +154,7 @@ functions:
     }
     
     // cannonballs inflict less damage then the default
-    if(dmtType==DMT_CANNONBALL || DMT_CANNONBALL_EXPLOSION && fDamageAmmount>750.0f)
+    if((dmtType==DMT_CANNONBALL || dmtType==DMT_CANNONBALL_EXPLOSION) && (fDamageAmmount>750.0f))
     {
       fDamageAmmount *= 0.25f;
     }

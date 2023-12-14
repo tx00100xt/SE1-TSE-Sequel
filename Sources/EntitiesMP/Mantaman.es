@@ -363,9 +363,6 @@ procedures:
  *                       M  A  I  N                         *
  ************************************************************/
   Main(EVoid) {
-      if (m_EeftType==EFT_FLY_GROUND_GROUND | EFT_FLY_GROUND_AIR | EFT_FLY_AIR_GROUND | EFT_FLY_AIR_AIR | EFT_GROUND_ONLY) {
-      m_EeftType=EFT_FLY_ONLY;
-    }
     // declare yourself as a model
     InitAsModel();
     SetPhysicsFlags(EPF_MODEL_WALKING|EPF_HASLUNGS|EPF_HASGILLS);
@@ -374,7 +371,7 @@ procedures:
     SetHealth(170.0f);
     m_fMaxHealth = 170.0f;
     en_fDensity = 2000.0f;
-	m_EeftType=EFT_FLY_ONLY;
+    m_EeftType=EFT_FLY_ONLY;
     m_sptType = SPT_SLIME;
     
 
