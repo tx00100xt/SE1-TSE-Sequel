@@ -2327,8 +2327,6 @@ extern void SetupCompModel_t(const CTString &strName)
 
   if(!_bHasFloor) {
     ThrowF_t(TRANS("Unknown model '%s'"), (const char *) strName);
-  } else {
-    _bHasFloor = FALSE;
   }
 }
 
