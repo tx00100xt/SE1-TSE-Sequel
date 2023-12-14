@@ -194,6 +194,7 @@ void CProjectile_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
   pdec->PrecacheModel(MODEL_SPIDER_WEB     );
   pdec->PrecacheTexture(TEXTURE_SPIDER_WEB );
   pdec->PrecacheSound(SOUND_SLIME_FLYING   );
+  pdec->PrecacheTexture(TEXTURE_RED_LASER  );
   pdec->PrecacheTexture(TEXTURE_GREEN_PLASMA_BALL);
 
   switch ((ProjectileType)iUser) {
@@ -577,7 +578,7 @@ void CProjectile_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
   case PRT_PLASMABOLT:
   case PRT_MAMUTMAN:
     pdec->PrecacheModel(MODEL_CYBORG_LASER                   );
-    pdec->PrecacheTexture(TEXTURE_RED_LASER         );
+    //pdec->PrecacheTexture(TEXTURE_RED_LASER         );
     pdec->PrecacheClass(CLASS_BASIC_EFFECT, BET_PLASMA_EXPLOSION);
     pdec->PrecacheSound(SOUND_PLASMA_EXPLOSION  );
     break;

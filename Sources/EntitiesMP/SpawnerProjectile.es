@@ -43,7 +43,7 @@ void CSpawnerProjectile_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
 {
   pdec->PrecacheClass(CLASS_BASIC_EFFECT, BET_CANNON);
   pdec->PrecacheModel(MODEL_INVISIBLE);
-};
+}
 %}
 
 class CSpawnerProjectile : CMovableModelEntity {
@@ -156,6 +156,7 @@ procedures:
     ASSERT(IsDerivedFromClass(esp.penTemplate, "Enemy Base"));
     m_penOwner = esp.penOwner;
     m_penTemplate = esp.penTemplate;
+    PrecacheModel(MODEL_INVISIBLE);
 
     m_fTimeAdjust = FRnd()*5.0f;
     EntityInfo *pei = (EntityInfo*) (m_penTemplate->GetEntityInfo());
