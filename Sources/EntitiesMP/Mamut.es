@@ -118,7 +118,7 @@ functions:
 
   BOOL IsTargetValid(SLONG slPropertyOffset, CEntity *penTarget)
    {
-    if (slPropertyOffset == offsetof(CMamut, m_penSpawn1) && slPropertyOffset <= offsetof(CMamut, m_penSpawn3))
+    if (slPropertyOffset == _offsetof(CMamut, m_penSpawn1) && slPropertyOffset <= _offsetof(CMamut, m_penSpawn3))
 	 {
       return ValidEnemy(penTarget);
     } 
