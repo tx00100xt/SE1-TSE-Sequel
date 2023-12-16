@@ -129,6 +129,8 @@ procedures:
     // remember the initial parameters
     ASSERT(eaw.penLauncher!=NULL);
     m_penLauncher = eaw.penLauncher;
+    PrecacheModel(MODEL_AIRWAVE);
+    PrecacheTexture(TEXTURE_AIRWAVE);
 
     // initialization
     InitAsModel();

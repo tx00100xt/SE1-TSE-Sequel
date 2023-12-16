@@ -196,6 +196,7 @@ void CProjectile_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
   pdec->PrecacheSound(SOUND_SLIME_FLYING   );
   pdec->PrecacheTexture(TEXTURE_RED_LASER  );
   pdec->PrecacheTexture(TEXTURE_GREEN_PLASMA_BALL);
+  pdec->PrecacheSound(SOUND_PLASMA_EXPLOSION);
 
   switch ((ProjectileType)iUser) {
   case PRT_ROCKET                :
@@ -580,7 +581,7 @@ void CProjectile_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
     pdec->PrecacheModel(MODEL_CYBORG_LASER                   );
     //pdec->PrecacheTexture(TEXTURE_RED_LASER         );
     pdec->PrecacheClass(CLASS_BASIC_EFFECT, BET_PLASMA_EXPLOSION);
-    pdec->PrecacheSound(SOUND_PLASMA_EXPLOSION  );
+    //pdec->PrecacheSound(SOUND_PLASMA_EXPLOSION  );
     break;
   default:
     ASSERT(FALSE);
