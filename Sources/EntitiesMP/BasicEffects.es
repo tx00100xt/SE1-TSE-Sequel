@@ -120,6 +120,7 @@ void CBasicEffect_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
 {
   // Fix precache
   pdec->PrecacheTexture(TEXTURE_BULLET_ENERGY);
+  pdec->PrecacheSound(SOUND_PLASMA_EXPLOSION);
 
   switch ((BasicEffectType)iUser) {
   case BET_ROCKET:
@@ -266,7 +267,7 @@ void CBasicEffect_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
     break;
   case BET_PLASMA_EXPLOSION:
   case BET_HYDROGUN:
-    pdec->PrecacheSound(SOUND_PLASMA_EXPLOSION);
+    //pdec->PrecacheSound(SOUND_PLASMA_EXPLOSION);
     pdec->PrecacheSound(SOUND_HYDROGUN);
     pdec->PrecacheModel(MDL_ROCKET_EXPLOSION);
     pdec->PrecacheTexture(TXT_ROCKET_EXPLOSION);

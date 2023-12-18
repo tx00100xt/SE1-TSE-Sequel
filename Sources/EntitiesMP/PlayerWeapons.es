@@ -316,6 +316,8 @@ void CPlayerWeapons_Precache(ULONG ulAvailable)
   pdec->PrecacheModel(MODEL_FLARE01);
   pdec->PrecacheClass(CLASS_BULLET);
   pdec->PrecacheSound(SOUND_SILENCE);
+  pdec->PrecacheSound(SOUND_PLASMA_EXPLOSION);
+  pdec->PrecacheSound(SOUND_ROCKETLAUNCHER_TARGET);
 
   // precache other weapons if available
   if ( ulAvailable&(1<<(WEAPON_KNIFE-1)) ) {
@@ -516,7 +518,7 @@ void CPlayerWeapons_Precache(ULONG ulAvailable)
     pdec->PrecacheTexture(TEXTURE_PLASMA_BARREL_BIG);  
     pdec->PrecacheSound(SOUND_PLASMA_FIRE);
     pdec->PrecacheSound(SOUND_PLASMA_FIRE_ALT);
-    pdec->PrecacheSound(SOUND_PLASMA_EXPLOSION);
+    //pdec->PrecacheSound(SOUND_PLASMA_EXPLOSION);
     pdec->PrecacheClass(CLASS_PROJECTILE, PRT_LASER_RAY);
   }
 
