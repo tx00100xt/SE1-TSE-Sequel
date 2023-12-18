@@ -161,6 +161,7 @@ static CTextureObject _toSniperWheel;
 static CTextureObject _toSniperArrow;
 static CTextureObject _toSniperEye;
 static CTextureObject _toSniperLed;
+static CTextureObject _toSniperLine;
 
 // all info about color transitions
 struct ColorTransitionTable {
@@ -698,6 +699,46 @@ static void HUD_DrawSniperMask( void )
   }
 }
 
+// draw tommygun mask
+static void HUD_DrawTommyGunMask( void )
+{
+  // determine location
+  const FLOAT fSizeI = _pixDPWidth;
+  const FLOAT fSizeJ = _pixDPHeight;
+  const FLOAT fCenterI = fSizeI/2;  
+  const FLOAT fCenterJ = fSizeJ/2; 
+
+  COLOR colMask = C_WHITE|CT_OPAQUE;
+
+  // crosshair lines
+  _pDP->InitTexture( &_toSniperLine);
+  _pDP->AddTexture( 0, fSizeJ/2-1, fSizeI, fSizeJ/2, 1.0f, 0.0f, 0.0f, 1.0f, C_WHITE|50); // horiz line
+  _pDP->AddTexture( fSizeI/2-1, 0, fSizeI/2, fSizeJ, 1.0f, 0.0f, 0.0f, 1.0f, C_WHITE|50); // vert line
+  _pDP->FlushRenderingQueue();
+
+  // prepare for output of distance
+  CTString strTmp;
+  FLOAT _fYResolutionScaling = (FLOAT)_pixDPHeight/480.0f;
+  FLOAT fDistance = _penWeapons->m_fRayHitDistance;
+
+  // print it out
+  if (_fResolutionScaling>=1.0f)
+  {
+    if (_fResolutionScaling<=1.3f) {
+      _pDP->SetFont( _pfdConsoleFont);
+      _pDP->SetTextAspect( 1.0f);
+      _pDP->SetTextScaling(1.0f);
+    } else {
+      _pDP->SetFont( _pfdDisplayFont);
+      _pDP->SetTextAspect( 1.0f);
+      _pDP->SetTextScaling(0.7f*_fYResolutionScaling);
+    } 
+    if (fDistance>1500.0f) { strTmp.PrintF("---.-");           }
+    else if (TRUE)         { strTmp.PrintF("%.1f", fDistance); }
+    _pDP->PutTextC( strTmp, fCenterI, fCenterJ+50.0f*_fYResolutionScaling, C_RED|220);
+  }
+}
+
 
 // helper functions
 
@@ -845,7 +886,10 @@ extern void DrawHUD( const CPlayer *penPlayerCurrent, CDrawPort *pdpCurrent, BOO
   if (((CPlayerWeapons*)&*penPlayerOwner->m_penWeapons)->m_iCurrentWeapon==WEAPON_SNIPER
     &&((CPlayerWeapons*)&*penPlayerOwner->m_penWeapons)->m_bSniping) {
     HUD_DrawSniperMask();
-  } 
+  } else if (((CPlayerWeapons*)&*penPlayerOwner->m_penWeapons)->m_iCurrentWeapon==WEAPON_TOMMYGUN
+    &&((CPlayerWeapons*)&*penPlayerOwner->m_penWeapons)->m_bSniping) {
+    HUD_DrawTommyGunMask();
+  }
    
   // prepare font and text dimensions
   CTString strValue;
@@ -1551,6 +1595,7 @@ extern void InitHUD(void)
     _toSniperArrow.SetData_t(       CTFILENAME("TexturesMP\\Interface\\SniperArrow.tex"));
     _toSniperEye.SetData_t(       CTFILENAME("TexturesMP\\Interface\\SniperEye.tex"));
     _toSniperLed.SetData_t(       CTFILENAME("TexturesMP\\Interface\\SniperLed.tex"));
+    _toSniperLine.SetData_t( CTFILENAME("Textures\\Interface\\SniperLine.tex"));
 
     // initialize tile texture
     _toTile.SetData_t( CTFILENAME("Textures\\Interface\\Tile.tex"));
@@ -1606,6 +1651,7 @@ extern void InitHUD(void)
     ((CTextureData*)_toSniperArrow.GetData())->Force(TEX_CONSTANT);
     ((CTextureData*)_toSniperEye.GetData())->Force(TEX_CONSTANT);
     ((CTextureData*)_toSniperLed.GetData())->Force(TEX_CONSTANT);
+    ((CTextureData*)_toSniperLine.GetData())->Force(TEX_CONSTANT);
 
   }
   catch (const char *strError) {
