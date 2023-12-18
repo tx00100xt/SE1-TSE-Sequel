@@ -244,7 +244,7 @@ static void KillAllEnemies(CEntity *penKiller)
       if (penEnemy->m_penEnemy==NULL) {
         continue;
       }
-      penKiller->InflictDirectDamage(pen, penKiller, DMT_BULLET, 
+      penKiller->InflictDirectDamage(pen, penKiller, DMT_ABYSS, 
         penEnemy->GetHealth()+1, pen->GetPlacement().pl_PositionVector, FLOAT3D(0,1,0));
     }
   }}
