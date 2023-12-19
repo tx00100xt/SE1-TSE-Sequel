@@ -652,6 +652,12 @@ procedures:
     // setup time for forced expolding
     m_tmForceExplode=_pTimer->CurrentTick()+30.0f;
 
+    // force precache
+    PrecacheModel(MODEL_BALL);
+    PrecacheTexture(TEXTURE_NUKE_BALL);
+    PrecacheModel(MODEL_DEV);
+    PrecacheTexture(TEXTURE_DEV);
+
     // initialization
     Initialize();
 
