@@ -129,7 +129,7 @@ virtual CTString GetPlayerKillDescription(const CTString &strPlayerName, const E
     // take less damage from heavy bullets (e.g. sniper)
     if(dmtType==DMT_BULLET && fDamageAmmount>100.0f)
     {
-      fDamageAmmount*=0.5f;
+      fDamageAmmount*=1.0f;
     }
 
     CEnemyBase::ReceiveDamage(penInflictor, dmtType, fDamageAmmount,

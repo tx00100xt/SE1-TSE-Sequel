@@ -2076,6 +2076,11 @@ functions:
     CheatAllMessagesDir("DataMP\\Messages\\statistics\\", 0);
     CheatAllMessagesDir("DataMP\\Messages\\weapons\\", 0);
     CheatAllMessagesDir("DataMP\\Messages\\background\\", 0);
+    CheatAllMessagesDir("DataF\\Messages\\enemies\\", 0);
+    CheatAllMessagesDir("DataF\\Messages\\information\\", 0);
+    CheatAllMessagesDir("DataF\\Messages\\statistics\\", 0);
+    CheatAllMessagesDir("DataF\\Messages\\weapons\\", 0);
+    CheatAllMessagesDir("DataF\\Messages\\background\\", 0);
   }
 
   // mark that an item was picked

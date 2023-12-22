@@ -621,7 +621,7 @@ procedures:
         SetHealth(700.0f);
         m_fMaxHealth = 700.0f;
         // damage/explode properties
-        m_fDamageWounded = 300.0f;
+        m_fDamageWounded = 200.0f;
         m_fBlowUpAmount = 2000.0f;
         m_fBodyParts = 12;
         // setup attack distances

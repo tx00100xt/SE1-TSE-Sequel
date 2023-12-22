@@ -119,8 +119,8 @@ event ESpawnEffect {
 void CBasicEffect_OnPrecache(CDLLEntityClass *pdec, INDEX iUser) 
 {
   // Fix precache
-  pdec->PrecacheTexture(TEXTURE_BULLET_ENERGY);
-  pdec->PrecacheSound(SOUND_PLASMA_EXPLOSION);
+  // pdec->PrecacheTexture(TEXTURE_BULLET_ENERGY);
+  // pdec->PrecacheSound(SOUND_PLASMA_EXPLOSION);
 
   switch ((BasicEffectType)iUser) {
   case BET_ROCKET:
@@ -224,6 +224,7 @@ void CBasicEffect_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
     pdec->PrecacheSound(SOUND_BULLET_STAIN_FLESH);
     pdec->PrecacheSound(SOUND_BULLET_METAL);
     pdec->PrecacheSound(SOUND_BULLET_ENERGY);
+    pdec->PrecacheTexture(TEXTURE_BULLET_ENERGY);
     break;
   case BET_BULLETTRAIL:
     pdec->PrecacheModel(MODEL_BULLET_TRAIL);
@@ -266,6 +267,7 @@ void CBasicEffect_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
     pdec->PrecacheSound(SOUND_TELEPORT_REVERSE);
     break;
   case BET_PLASMA_EXPLOSION:
+    pdec->PrecacheSound(SOUND_PLASMA_EXPLOSION);
   case BET_HYDROGUN:
     //pdec->PrecacheSound(SOUND_PLASMA_EXPLOSION);
     pdec->PrecacheSound(SOUND_HYDROGUN);

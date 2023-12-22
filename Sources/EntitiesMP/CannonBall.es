@@ -80,8 +80,8 @@ event EForceExplode {
 #define DEV_DAMAGE_MIN 0.0f
 #define DEV_DAMAGE_MAX 140.0f
 #define DEV_RANGE_DAMAGE (20.0f)
-#define DEV_RANGE_HOTSPOT 2.0f
-#define DEV_RANGE_FALLOFF 6.0f
+#define DEV_RANGE_HOTSPOT 3.0f
+#define DEV_RANGE_FALLOFF 4.0f
 
 #define NUKE2_DAMAGE_MIN 400.0f
 #define NUKE2_DAMAGE_MAX 400.0f

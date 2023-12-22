@@ -545,9 +545,9 @@ procedures:
     // setup moving speed
     m_fWalkSpeed = FRnd() + 8.0f;
     m_aWalkRotateSpeed = AngleDeg(FRnd()*10.0f + 25.0f);
-    m_fAttackRunSpeed = FRnd() + 15.0f;
+    m_fAttackRunSpeed = FRnd() + 12.0f;
     m_aAttackRotateSpeed = AngleDeg(FRnd()*15.0f + 250.0f);
-    m_fCloseRunSpeed = FRnd() + 15.0f;
+    m_fCloseRunSpeed = FRnd() + 12.0f;
     m_aCloseRotateSpeed = AngleDeg(FRnd()*15.0f + 250.0f);
     // setup attack distances
     m_fAttackDistance = 2000.0f;
@@ -564,7 +564,7 @@ procedures:
     // damage/explode properties
     m_fBlowUpAmount = 250000000000.0f;
     m_fBodyParts = 5;
-    m_fDamageWounded = 5000.0f;
+    m_fDamageWounded = 2500.0f;
     m_iScore = 1000000;
 
     // continue behavior in base class

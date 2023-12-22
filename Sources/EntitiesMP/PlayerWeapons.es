@@ -42,8 +42,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "Models/Weapons/Cannon/Cannon.h"
 #include "Models/Weapons/Cannon/Body.h"
 // Mission Pack weapons
-#include "ModelsMP/Weapons/Sniper/Sniper.h"
-#include "ModelsMP/Weapons/Sniper/Body.h"
+#include "ModelsF/Weapons/Sniper/Sniper.h"
+#include "ModelsF/Weapons/Sniper/Body.h"
 #include "ModelsMP/Weapons/Flamer/Flamer.h"
 #include "ModelsMP/Weapons/Flamer/Body.h"
 #include "ModelsMP/Weapons/Flamer/FuelReservoir.h"
@@ -401,10 +401,11 @@ void CPlayerWeapons_Precache(ULONG ulAvailable)
     pdec->PrecacheModel(MODEL_RL_ROTATINGPART    );   
     pdec->PrecacheModel(MODEL_RL_MAGAZINE        );   
     pdec->PrecacheTexture(TEXTURE_RL_BODY        );     
-    pdec->PrecacheTexture(TEXTURE_RL_MAGAZINE    );     
-    pdec->PrecacheSound(SOUND_ROCKETLAUNCHER_FIRE);   
+    pdec->PrecacheTexture(TEXTURE_RL_MAGAZINE    );
+    pdec->PrecacheSound(SOUND_ROCKETLAUNCHER_FIRE); 
+    pdec->PrecacheSound(SOUND_ROCKETLAUNCHER_TARGET);
     pdec->PrecacheClass(CLASS_PROJECTILE, PRT_ROCKET);
-    pdec->PrecacheModel(MODEL_RL_HAND     ); 
+    pdec->PrecacheModel(MODEL_RL_HAND     );
   }                                        
 
   if ( ulAvailable&(1<<(WEAPON_GRENADELAUNCHER-1)) ) {
@@ -845,9 +846,9 @@ components:
 330 sound   SOUND_GRENADELAUNCHER_ALT   "Models\\Weapons\\GrenadeLauncherHD\\Sounds\\Cluster.wav",
 
 // ************** SNIPER **************
-110 model   MODEL_SNIPER                "ModelsMP\\Weapons\\Sniper\\Sniper.mdl",
-111 model   MODEL_SNIPER_BODY           "ModelsMP\\Weapons\\Sniper\\Body.mdl",
-112 texture TEXTURE_SNIPER_BODY         "ModelsMP\\Weapons\\Sniper\\Body.tex",
+110 model   MODEL_SNIPER                "ModelsF\\Weapons\\Sniper\\Sniper.mdl",
+111 model   MODEL_SNIPER_BODY           "ModelsF\\Weapons\\Sniper\\Body.mdl",
+112 texture TEXTURE_SNIPER_BODY         "ModelsF\\Weapons\\Sniper\\W_Set2_Class2.tex",
 113 sound   SOUND_SNIPER_FIRE           "ModelsMP\\Weapons\\Sniper\\Sounds\\Fire.wav",
 //114 sound   SOUND_SNIPER_RELOAD         "ModelsMP\\Weapons\\Sniper\\Sounds\\Reload.wav",
 //115 sound   SOUND_SNIPER_ZOOM           "ModelsMP\\Weapons\\Sniper\\Sounds\\Zoom.wav",
@@ -2481,7 +2482,7 @@ functions:
     // init and launch cannon ball
     ELaunchCannonBall eLaunch;
     eLaunch.penLauncher = m_penPlayer;
-    eLaunch.fLaunchPower = 200;
+    eLaunch.fLaunchPower = 300;
     eLaunch.fSize = 1.0f;
     eLaunch.cbtType = CBT_DEV;
     penBall->Initialize(eLaunch);
@@ -3172,7 +3173,7 @@ functions:
         fnmMsg = CTFILENAME("Data\\Messages\\Weapons\\tommygun.txt"); 
         break;
       case WIT_SNIPER:        
-        ((CPlayer&)*m_penPlayer).ItemPicked(TRANS("RAPTOR Arctic Warfare Sniper"), 0);
+        ((CPlayer&)*m_penPlayer).ItemPicked(TRANS("RAPTOR Anti-tank Sniper"), 0);
         fnmMsg = CTFILENAME("DataMP\\Messages\\Weapons\\sniper.txt"); 
         break;
       case WIT_MINIGUN:         
@@ -4970,7 +4971,7 @@ procedures:
       DecAmmo(m_iShells, 1);
       SetFlare(0, FLARE_ADD);
       PlayLightAnim(LIGHT_ANIM_COLT_SHOTGUN, 0);
-      m_moWeapon.PlayAnim(SINGLESHOTGUN_ANIM_FIRE1, 0);
+      m_moWeapon.PlayAnim(SINGLESHOTGUN_ANIM_FIRE1FAST, 0);
       // sound
       CPlayer &pl = (CPlayer&)*m_penPlayer;
       PlaySound(pl.m_soWeapon0, SOUND_SINGLESHOTGUN_FIRE, SOF_3D|SOF_VOLUMETRIC);
@@ -5042,7 +5043,7 @@ procedures:
       }
 
       /* drop shell */
-        autowait(m_moWeapon.GetAnimLength((SINGLESHOTGUN_ANIM_FIRE1) ) - (0.4f) );
+        autowait(m_moWeapon.GetAnimLength((SINGLESHOTGUN_ANIM_FIRE1FAST) ) - (0.4f) );
       // no ammo -> change weapon
       if (m_iShells<=0) { SelectNewWeapon(); }
     } else {
@@ -5188,8 +5189,8 @@ procedures:
     // fire one bullet
     if (m_iBullets>0) {
       FireMachineBullet(wpn_fFX[WEAPON_TOMMYGUN], wpn_fFY[WEAPON_TOMMYGUN], 
-        500.0f, 10.0f, ((GetSP()->sp_bCooperative) ? 0.01f : 0.03f),
-        ((GetSP()->sp_bCooperative) ? 0.5f : 0.0f));
+        500.0f, 10.0f, ((GetSP()->sp_bCooperative) ? 0.0f : 0.0f),
+        ((GetSP()->sp_bCooperative) ? 0.0f : 0.0f));
       SpawnRangeSound(50.0f);
       if(_pNetwork->IsPlayerLocal(m_penPlayer)) {IFeel_PlayEffect("Tommygun_fire");}
       DecAmmo(m_iBullets, 1);
@@ -5682,7 +5683,7 @@ procedures:
 
       autowait(0.05f);
 
-      autowait(m_moWeapon.GetAnimLength(DEVASTATOR_ANIM_FIRE)-0.05f);
+      autowait(m_moWeapon.GetAnimLength(DEVASTATOR_ANIM_FIRE)-0.2f);
 
       // no ammo -> change weapon
       if (m_iDev<=0) { SelectNewWeapon(); }

@@ -34,8 +34,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "Models/Weapons/MiniGun/Body.h"
 #include "Models/Weapons/GrenadeLauncher/GrenadeLauncherItem.h"
 #include "ModelsF/Weapons/RocketLauncher/RocketLauncherItem.h"
-#include "ModelsMP/Weapons/Sniper/SniperItem.h"
-#include "ModelsMP/Weapons/Sniper/Sniper.h"
+#include "ModelsF/Weapons/Sniper/SniperItem.h"
+#include "ModelsF/Weapons/Sniper/Sniper.h"
 //#include "Models/Weapons/Pipebomb/StickItem.h"
 #include "ModelsMP/Weapons/Flamer/FlamerItem.h"
 #include "ModelsMP/Weapons/Flamer/Body.h"
@@ -390,9 +390,9 @@ components:
 105 texture TEXTURE_GL_MOVINGPART       "Models\\Weapons\\GrenadeLauncher\\MovingPipe.tex",
 
 // ************** SNIPER **************
-110 model   MODEL_SNIPER                "ModelsMP\\Weapons\\Sniper\\Sniper.mdl",
-111 model   MODEL_SNIPER_BODY           "ModelsMP\\Weapons\\Sniper\\Body.mdl",
-112 texture TEXTURE_SNIPER_BODY         "ModelsMP\\Weapons\\Sniper\\Body.tex",
+110 model   MODEL_SNIPER                "ModelsF\\Weapons\\Sniper\\SniperItem.mdl",
+111 model   MODEL_SNIPER_BODY           "ModelsF\\Weapons\\Sniper\\Body.mdl",
+112 texture TEXTURE_SNIPER_BODY         "ModelsF\\Weapons\\Sniper\\W_Set2_Class2.tex",
 
 /*
 // ************** PIPEBOMB **************

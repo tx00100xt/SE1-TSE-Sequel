@@ -42,10 +42,7 @@ properties:
   1 enum CatChar m_CatChar   "Character" 'C' = CAT_GENERAL,
   2 BOOL m_bFistHit = FALSE,          // used for close attack
   3 BOOL m_bTouchAnother = FALSE,     // another entity touched on far attack
-  4 CSoundObject m_soCloak,            // for running sound
-  5 BOOL m_bCloakSoundPlaying = FALSE,
   6 INDEX   m_fgibTexture = TEXTURE_CATMAN2_SOLDIER,
-  7 BOOL m_bInvisible = FALSE,
 
 components:
   0 class   CLASS_BASE        "Classes\\EnemyBase.ecl",
@@ -160,7 +157,7 @@ functions:
 
       PrecacheTexture(TEXTURE_CATMAN2_TERMINATOR);
 
-      PrecacheClass(CLASS_PROJECTILE, PRT_GRENADE);
+      PrecacheClass(CLASS_PROJECTILE, PRT_GRENADE_WEAK);
 	}
 
 
@@ -191,15 +188,6 @@ functions:
 	}
   };
 
-  /* Fill in entity statistics - for AI purposes only */
-  BOOL FillEntityStatistics(EntityStats *pes)
-  {
-    if (m_bInvisible) {
-      pes->es_strName+=" Invisible";
-    }
-    return TRUE;
-  }
-
   /* Entity info */
   void *GetEntityInfo(void) {
     return &eiCatman2;
@@ -223,7 +211,6 @@ functions:
 
   // damage anim
   INDEX AnimForDamage(FLOAT fDamage) {
-        DeactivateCloak();
     INDEX iAnim;
     INDEX iAnimA;
     switch (IRnd()%2) {
@@ -239,7 +226,6 @@ functions:
 
   // death
   INDEX AnimForDeath(void) {
-        DeactivateCloak();
     INDEX iAnim;
     INDEX iAnimA;
       FLOAT3D vFront;
@@ -280,34 +266,18 @@ functions:
   void StandingAnim(void) {
     StartModelAnim(CATMAN_ANIM_IDLE, AOF_LOOPING|AOF_NORESTART);
     ArmorModel()->PlayAnim(ARMOR_ANIM_IDLE, AOF_LOOPING|AOF_NORESTART);
-        DeactivateCloak();
   };
   void WalkingAnim(void) {
     StartModelAnim(CATMAN_ANIM_WALK, AOF_LOOPING|AOF_NORESTART);
     ArmorModel()->PlayAnim(ARMOR_ANIM_WALK, AOF_LOOPING|AOF_NORESTART);
-      if (m_penEnemy!=NULL) {
-        ActivateCloak();
-      } else {
-        DeactivateCloak();
-      }
   };
   void RunningAnim(void) {
     StartModelAnim(CATMAN_ANIM_RUN, AOF_LOOPING|AOF_NORESTART);
     ArmorModel()->PlayAnim(ARMOR_ANIM_RUN, AOF_LOOPING|AOF_NORESTART);
-      if (m_penEnemy!=NULL) {
-        ActivateCloak();
-      } else {
-        DeactivateCloak();
-      }
   };
   void RotatingAnim(void) {
     StartModelAnim(CATMAN_ANIM_WALK, AOF_LOOPING|AOF_NORESTART);
     ArmorModel()->PlayAnim(ARMOR_ANIM_WALK, AOF_LOOPING|AOF_NORESTART);
-      if (m_penEnemy!=NULL) {
-        ActivateCloak();
-      } else {
-        DeactivateCloak();
-      }
   };
 
   // virtual sound functions
@@ -323,25 +293,6 @@ functions:
   void DeathSound(void) {
     PlaySound(m_soSound, CATSOUND(DEATH), SOF_3D);
   };
-
-
-  // running sounds
-  void ActivateCloak(void)
-  {
-    if (!m_bCloakSoundPlaying) {
-      PlaySound(m_soCloak, SOUND_CLOAK, SOF_3D|SOF_LOOP);
-      m_bCloakSoundPlaying = TRUE;
-	  m_bInvisible = TRUE;
-    }
-      GetModelObject()->mo_colBlendColor = C_BLACK|0x25;
-  }
-  void DeactivateCloak(void)
-  {
-    m_soCloak.Stop();
-    m_bCloakSoundPlaying = FALSE;
-	  m_bInvisible = FALSE;
-      GetModelObject()->mo_colBlendColor = C_WHITE|CT_OPAQUE;
-  }
 
 /************************************************************
  *                 BLOW UP FUNCTIONS                        *
@@ -406,8 +357,6 @@ procedures:
  *                A T T A C K   E N E M Y                   *
  ************************************************************/
   Fire(EVoid) : CEnemyBase::Fire {
-    DeactivateCloak();
-    PlaySound(m_soCloak, SOUND_APPEAR, SOF_3D|SOF_SMOOTHCHANGE);
     // to fire
     StartModelAnim(CATMAN_ANIM_TOFIRE, 0);
     ArmorModel()->PlayAnim(ARMOR_ANIM_TOFIRE, 0); 
@@ -509,7 +458,7 @@ procedures:
     CEntityPointer penProjectile = CreateEntity(pl, CLASS_PROJECTILE);
     ELaunchProjectile eLaunch;
     eLaunch.penLauncher = this;
-    eLaunch.prtType = PRT_GRENADE;
+    eLaunch.prtType = PRT_GRENADE_WEAK;
     eLaunch.fSpeed = fLaunchSpeed;
     penProjectile->Initialize(eLaunch);
       autowait(0.1f + FRnd()*0.1f);
@@ -544,8 +493,6 @@ procedures:
   JumpOnEnemy(EVoid) {
     StartModelAnim(CATMAN_ANIM_LEAP, 0);
     ArmorModel()->PlayAnim(ARMOR_ANIM_LEAP, AOF_NORESTART); 
-    DeactivateCloak();
-    PlaySound(m_soCloak, SOUND_APPEAR, SOF_3D|SOF_SMOOTHCHANGE);
 
 
     // jump
@@ -577,7 +524,6 @@ procedures:
   // hit with bones
   HitWithBones(EVoid) {
     // attack with bones
-    DeactivateCloak();
     StartModelAnim(CATMAN_ANIM_MELEE, 0);
     ArmorModel()->PlayAnim(ARMOR_ANIM_MELEE, AOF_NORESTART); 
 
@@ -655,7 +601,7 @@ procedures:
     m_aWalkRotateSpeed = FRnd()*25.0f + 45.0f;
     m_fAttackRunSpeed = FRnd() + 14.0f;
     m_aAttackRotateSpeed = FRnd()*200 + 600.0f;
-    m_fCloseRunSpeed = FRnd() + 19.0f;
+    m_fCloseRunSpeed = FRnd() + 18.0f;
     m_aCloseRotateSpeed = FRnd()*100 + 1000.0f;
     // setup attack distances
     m_fAttackDistance = 150.0f;
@@ -672,7 +618,6 @@ procedures:
     m_iScore = 1000;
     if (m_fStepHeight==-1) {
       m_fStepHeight = 4.0f;
-    m_soCloak.Set3DParameters(50.0f, 1.0f, 0.5f, 1.0f);
     }
    }
 
@@ -687,9 +632,9 @@ procedures:
     // setup moving speed
     m_fWalkSpeed = FRnd() + 2.0f;
     m_aWalkRotateSpeed = FRnd()*25.0f + 45.0f;
-    m_fAttackRunSpeed = FRnd() + 9.0f;
+    m_fAttackRunSpeed = FRnd() + 13.0f;
     m_aAttackRotateSpeed = FRnd()*200 + 600.0f;
-    m_fCloseRunSpeed = FRnd() + 11.0f;
+    m_fCloseRunSpeed = FRnd() + 15.0f;
     m_aCloseRotateSpeed = FRnd()*100 + 1000.0f;
     // setup attack distances
     m_fAttackDistance = 100.0f;
@@ -706,7 +651,6 @@ procedures:
     m_iScore = 3000;
     if (m_fStepHeight==-1) {
       m_fStepHeight = 4.0f;
-    m_soCloak.Set3DParameters(50.0f, 2.0f, 0.5f, 1.0f);
     }
    }
 
@@ -721,9 +665,9 @@ procedures:
     // setup moving speed
     m_fWalkSpeed = FRnd() + 3.5f;
     m_aWalkRotateSpeed = FRnd()*25.0f + 45.0f;
-    m_fAttackRunSpeed = FRnd() + 12.0f;
+    m_fAttackRunSpeed = FRnd() + 14.0f;
     m_aAttackRotateSpeed = FRnd()*200 + 600.0f;
-    m_fCloseRunSpeed = FRnd() + 15.0f;
+    m_fCloseRunSpeed = FRnd() + 17.0f;
     m_aCloseRotateSpeed = FRnd()*100 + 1000.0f;
     // setup attack distances
     m_fAttackDistance = 130.0f;
@@ -740,7 +684,6 @@ procedures:
     m_iScore = 6000;
     if (m_fStepHeight==-1) {
       m_fStepHeight = 4.0f;
-    m_soCloak.Set3DParameters(50.0f, 3.0f, 0.5f, 1.0f);
     }
    }
 

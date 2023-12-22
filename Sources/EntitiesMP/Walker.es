@@ -214,7 +214,7 @@ functions:
       PrecacheSound(SOUND_SOLDIER_IDLE );
       PrecacheSound(SOUND_SOLDIER_SIGHT);
       PrecacheSound(SOUND_SOLDIER_DEATH);
-      PrecacheSound(SOUND_SOLDIER_FIRE_LASER);
+      PrecacheSound(SOUND_GUNNER_FIRE_BULLET);
       PrecacheSound(SOUND_SOLDIER_WALK);
       // model's texture
       PrecacheTexture(TEXTURE_WALKER_SOLDIER);

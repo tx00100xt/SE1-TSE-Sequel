@@ -171,7 +171,7 @@ functions:
     
     // projectile
     PrecacheClass(CLASS_PROJECTILE, PRT_GUFFY_PROJECTILE);
-    PrecacheClass(CLASS_PROJECTILE, PRT_GRENADE);
+    PrecacheClass(CLASS_PROJECTILE, PRT_GRENADE_WEAK);
 
 	//debris
     PrecacheModel(MODEL_GUFFY_TUSK);
@@ -507,7 +507,7 @@ procedures:
       CEntityPointer penProjectile = CreateEntity(pl, CLASS_PROJECTILE);
       ELaunchProjectile eLaunch;
       eLaunch.penLauncher = this;
-      eLaunch.prtType = PRT_GRENADE;
+      eLaunch.prtType = PRT_GRENADE_WEAK;
       eLaunch.fSpeed = fLaunchSpeed;
       penProjectile->Initialize(eLaunch);
 
@@ -533,7 +533,7 @@ procedures:
       CEntityPointer penProjectile = CreateEntity(pl, CLASS_PROJECTILE);
       ELaunchProjectile eLaunch;
       eLaunch.penLauncher = this;
-      eLaunch.prtType = PRT_GRENADE;
+      eLaunch.prtType = PRT_GRENADE_WEAK;
       eLaunch.fSpeed = fLaunchSpeed;
       penProjectile->Initialize(eLaunch);
       
@@ -565,7 +565,7 @@ procedures:
       CEntityPointer penProjectile = CreateEntity(pl, CLASS_PROJECTILE);
       ELaunchProjectile eLaunch;
       eLaunch.penLauncher = this;
-      eLaunch.prtType = PRT_GRENADE;
+      eLaunch.prtType = PRT_GRENADE_WEAK;
       eLaunch.fSpeed = fLaunchSpeed;
       penProjectile->Initialize(eLaunch);
 
@@ -591,7 +591,7 @@ procedures:
       CEntityPointer penProjectile = CreateEntity(pl, CLASS_PROJECTILE);
       ELaunchProjectile eLaunch;
       eLaunch.penLauncher = this;
-      eLaunch.prtType = PRT_GRENADE;
+      eLaunch.prtType = PRT_GRENADE_WEAK;
       eLaunch.fSpeed = fLaunchSpeed;
       penProjectile->Initialize(eLaunch);
 	}

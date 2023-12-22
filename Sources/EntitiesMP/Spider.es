@@ -638,9 +638,9 @@ procedures:
       FLOAT3D vDirection = m_penEnemy->GetPlacement().pl_PositionVector-GetPlacement().pl_PositionVector;
       vDirection.Normalize();
       if (m_spType == SP_BIG) {
-        InflictDirectDamage(m_penEnemy, this, DMT_CLOSERANGE, 30.0f, FLOAT3D(0, 0, 0), vDirection);
+        InflictDirectDamage(m_penEnemy, this, DMT_CLOSERANGE, 25.0f, FLOAT3D(0, 0, 0), vDirection);
       } else if (m_spType == SP_HUGE) {
-        InflictDirectDamage(m_penEnemy, this, DMT_CLOSERANGE, 80.0f, FLOAT3D(0, 0, 0), vDirection);
+        InflictDirectDamage(m_penEnemy, this, DMT_CLOSERANGE, 60.0f, FLOAT3D(0, 0, 0), vDirection);
       } else  {
         InflictDirectDamage(m_penEnemy, this, DMT_CLOSERANGE, 10.0f, FLOAT3D(0, 0, 0), vDirection);
       }
@@ -684,7 +684,7 @@ procedures:
     // damage/explode properties
     if (m_spType == SP_SMALL)
     {
-      m_fAttackRunSpeed = 8.0f;//6
+      m_fAttackRunSpeed = 7.0f;//6
       m_aAttackRotateSpeed = AngleDeg(3600.0f);
       SetHealth(25.0f);
       SetModelMainTexture(TEXTURE_SPIDER_SMALL);
@@ -703,7 +703,7 @@ procedures:
     }
     else if (m_spType == SP_BIG)
     {
-      m_fAttackRunSpeed = 13.0f;//8
+      m_fAttackRunSpeed = 11.0f;//8
       m_aAttackRotateSpeed = AngleDeg(600.0f);
       SetHealth(250.0f);
       SetModelMainTexture(TEXTURE_SPIDER_BIG);
@@ -724,7 +724,7 @@ procedures:
     }
     else // HUGE
     {
-      m_fAttackRunSpeed = 20.0f;
+      m_fAttackRunSpeed = 17.0f;
       m_aAttackRotateSpeed = AngleDeg(600.0f);
       SetHealth(1000.0f);
       SetModelMainTexture(TEXTURE_SPIDER_HUGE);

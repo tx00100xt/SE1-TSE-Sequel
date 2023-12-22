@@ -64,7 +64,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "Models/Weapons/GrenadeLauncher/GrenadeLauncherItem.h"
 #include "Models/Weapons/Laser/LaserItem.h"
 #include "Models/Weapons/Cannon/Cannon.h"
-#include "ModelsMP/Weapons/Sniper/SniperItem.h"
+#include "ModelsF/Weapons/Sniper/SniperItem.h"
 #include "ModelsMP/Weapons/ChainSaw/ChainsawItem.h"
 #include "ModelsMP/Weapons/ChainSaw/BladeForPlayer.h"
 #include "ModelsMP/Weapons/Flamer/FlamerItem.h"
@@ -73,7 +73,6 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "ModelsF/Enemies/Catman/Armor.h"
 #include "AREP/Models/Cyborg2/Cyborg.h"
 #include "AREP/Models/DevilAlpha/Devil.h"
-#include "AREP/Models/Dragonman2/Dragonman.h"
 #include "ModelsF/Enemies/Fishman/Fishman2.h"
 #include "ModelsF/Enemies/Fishman/Spear.h"
 #include "AREP/Models/Huanman2/Huanman.h"
@@ -83,6 +82,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "AREP/Models/Sentry/DrivingWheel/Robot.h"
 #include "AREP/Models/Sentry/FlyingFighter/FlyingFighter.h"
 #include "AREP/Models/Waterman/WaterMan.h"
+#include "AREP/Models/Sentry/DrivingWheel/Robot.h"
+#include "AREP/Models/Sentry/FlyingFighter/FlyingFighter.h"
+#include "AREP/Models/Dragonman2/Dragonman.h"
 
 #include "ModelsF/NextEncounter/Enemies/DumDum/DumDum.h"
 #include "ModelsF/NextEncounter/Enemies/Tweedle/Tweedle.h"
@@ -97,6 +99,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "ModelsF/NextEncounter/Enemies/Ant/Ant.h"
 #include "ModelsF/NextEncounter/Enemies/Lurker/Lurker.h"
 #include "ModelsF/NextEncounter/Enemies/Guardian/Guardian.h"
+#include "ModelsF/NextEncounter/Enemies/Gladiator/Gladiator.h"
 
 #include "ModelsMP/Enemies/SS2/Albino/Albino.h"
 #include "ModelsMP/Enemies/SS2/Centaur/Centaur.h"
@@ -358,6 +361,38 @@ extern void SetupCompModel_t(const CTString &strName)
       CTFILENAME("ModelsMP\\Enemies\\SS2\\Primitive\\Weapons.tex"));
 
     pmo->StretchModel(FLOAT3D(4,4,4));
+    _bHasFloor = TRUE;
+
+  } else if (strName=="CrabmanRed") {
+    pmo->SetData_t(CTFILENAME("ModelsF\\Enemies\\Crabman\\Crabman2.mdl"));
+    pmo->PlayAnim(CRABMAN2_ANIM_WALK, AOF_LOOPING);
+    pmo->mo_toTexture.SetData_t(CTFILENAME("ModelsF\\Enemies\\Crabman\\Textures\\Crab_diffuse_Red.tex"));
+    _plModel = CPlacement3D(FLOAT3D(0,-4.0f,-14.0), ANGLE3D(165,0,0));
+
+    AddAttachment_t(pmo, CRABMAN2_ATTACHMENT_EYE1, 
+      CTFILENAME("Models\\Enemies\\Headman\\Projectile\\Bomb.mdl"), 0,
+      CTFILENAME("Models\\Enemies\\Headman\\Projectile\\Bomb.tex"));
+    AddAttachment_t(pmo, CRABMAN2_ATTACHMENT_EYE2, 
+      CTFILENAME("Models\\Enemies\\Headman\\Projectile\\Bomb.mdl"), 0,
+      CTFILENAME("Models\\Enemies\\Headman\\Projectile\\Bomb.tex"));
+
+    pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
+    _bHasFloor = TRUE;
+
+  } else if (strName=="CrabmanGreen") {
+    pmo->SetData_t(CTFILENAME("ModelsF\\Enemies\\Crabman\\Crabman2.mdl"));
+    pmo->PlayAnim(CRABMAN2_ANIM_WALK, AOF_LOOPING);
+    pmo->mo_toTexture.SetData_t(CTFILENAME("ModelsF\\Enemies\\Crabman\\Textures\\Crab_diffuse_Green.tex"));
+    _plModel = CPlacement3D(FLOAT3D(0,-2.0f,-7.0), ANGLE3D(165,0,0));
+
+    AddAttachment_t(pmo, CRABMAN2_ATTACHMENT_EYE1, 
+      CTFILENAME("Models\\Enemies\\Headman\\Projectile\\Bomb.mdl"), 0,
+      CTFILENAME("Models\\Enemies\\Headman\\Projectile\\Bomb.tex"));
+    AddAttachment_t(pmo, CRABMAN2_ATTACHMENT_EYE2, 
+      CTFILENAME("Models\\Enemies\\Headman\\Projectile\\Bomb.mdl"), 0,
+      CTFILENAME("Models\\Enemies\\Headman\\Projectile\\Bomb.tex"));
+
+    pmo->StretchModel(FLOAT3D(0.5f,0.5f,0.5f));
     _bHasFloor = TRUE;
 
   } else if (strName=="Monkey") {
@@ -726,74 +761,74 @@ extern void SetupCompModel_t(const CTString &strName)
   } else if (strName=="CyborgMedium") {
     pmo->SetData_t(CTFILENAME("AREP\\Models\\Cyborg2\\Cyborg.mdl"));
     pmo->PlayAnim(CYBORG_ANIM_WALK01, AOF_LOOPING);
-    pmo->mo_toTexture.SetData_t(CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
-    _plModel = CPlacement3D(FLOAT3D(0.0f,-1.25f,-3.0), ANGLE3D(-210,0,0));
-    pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
+    pmo->mo_toTexture.SetData_t(CTFILENAME("AREP\\Models\\Cyborg2\\CyborgOrangeFaded.tex"));
+    _plModel = CPlacement3D(FLOAT3D(0.0f,-2.5f,-6.0), ANGLE3D(-210,0,0));
+    pmo->StretchModel(FLOAT3D(2.0f,2.0f,2.0f));
   
     AddAttachment_t(pmo, CYBORG_ATTACHMENT_ASS, 
       CTFILENAME("AREP\\Models\\Cyborg2\\AssHole.mdl"), 0,
-      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgOrangeFaded.tex"));
     pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
     pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
     AddAttachment_t(pmo, CYBORG_ATTACHMENT_TORSO, 
       CTFILENAME("AREP\\Models\\Cyborg2\\Torso.mdl"), 0,
-      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgOrangeFaded.tex"));
     pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
     pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
     AddAttachment_t(pmo, CYBORG_ATTACHMENT_HEAD, 
       CTFILENAME("AREP\\Models\\Cyborg2\\Head.mdl"), 0,
-      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgOrangeFaded.tex"));
     pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
     pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
     AddAttachment_t(pmo, CYBORG_ATTACHMENT_RIGHTUPPERARM, 
       CTFILENAME("AREP\\Models\\Cyborg2\\RightUpperArm.mdl"), 0,
-      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgOrangeFaded.tex"));
     pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
     pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
     AddAttachment_t(pmo, CYBORG_ATTACHMENT_LEFTUPPERARM, 
       CTFILENAME("AREP\\Models\\Cyborg2\\LeftUpperArm.mdl"), 0,
-      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgOrangeFaded.tex"));
     pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
     pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
     AddAttachment_t(pmo, CYBORG_ATTACHMENT_RIGHTLOWERARM, 
       CTFILENAME("AREP\\Models\\Cyborg2\\RightLowerArm.mdl"), 0,
-      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgOrangeFaded.tex"));
     pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
     pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
     AddAttachment_t(pmo, CYBORG_ATTACHMENT_LEFTLOWERARM, 
       CTFILENAME("AREP\\Models\\Cyborg2\\LeftLowerArm.mdl"), 0,
-      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgOrangeFaded.tex"));
     pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
     pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
     AddAttachment_t(pmo, CYBORG_ATTACHMENT_RIGHTUPPERLEG, 
       CTFILENAME("AREP\\Models\\Cyborg2\\RightUpperLeg.mdl"), 0,
-      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgOrangeFaded.tex"));
     pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
     pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
     AddAttachment_t(pmo, CYBORG_ATTACHMENT_RIGHTLOWERLEG, 
       CTFILENAME("AREP\\Models\\Cyborg2\\RightLowerLeg.mdl"), 0,
-      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgOrangeFaded.tex"));
     pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
     pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
     AddAttachment_t(pmo, CYBORG_ATTACHMENT_LEFTUPPERLEG, 
       CTFILENAME("AREP\\Models\\Cyborg2\\LeftUpperLeg.mdl"), 0,
-      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgOrangeFaded.tex"));
     pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
     pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
     AddAttachment_t(pmo, CYBORG_ATTACHMENT_LEFTLOWERLEG, 
       CTFILENAME("AREP\\Models\\Cyborg2\\LeftLowerLeg.mdl"), 0,
-      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgOrangeFaded.tex"));
     pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
     pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
     AddAttachment_t(pmo, CYBORG_ATTACHMENT_FOOTRIGHT, 
       CTFILENAME("AREP\\Models\\Cyborg2\\Foot.mdl"), 0,
-      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgOrangeFaded.tex"));
     pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
     pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
     AddAttachment_t(pmo, CYBORG_ATTACHMENT_FOOTLEFT, 
       CTFILENAME("AREP\\Models\\Cyborg2\\Foot.mdl"), 0,
-      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
-    pmo->StretchModel(FLOAT3D(1.0f,1.0f,1.0f));
+      CTFILENAME("AREP\\Models\\Cyborg2\\CyborgOrangeFaded.tex"));
+    pmo->StretchModel(FLOAT3D(2.0f,2.0f,2.0f));
     pmo->mo_toReflection.SetData_t(CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"));
 
     _bHasFloor = TRUE;
@@ -802,7 +837,7 @@ extern void SetupCompModel_t(const CTString &strName)
     pmo->SetData_t(CTFILENAME("AREP\\Models\\Cyborg2\\Cyborg.mdl"));
     pmo->PlayAnim(CYBORG_ANIM_WALK01, AOF_LOOPING);
     pmo->mo_toTexture.SetData_t(CTFILENAME("AREP\\Models\\Cyborg2\\CyborgWhite.tex"));
-    _plModel = CPlacement3D(FLOAT3D(0.0f,-1.75f,-9.0), ANGLE3D(-210,0,0));
+    _plModel = CPlacement3D(FLOAT3D(0.0f,-3.75f,-9.0), ANGLE3D(-210,0,0));
     pmo->StretchModel(FLOAT3D(3.0f,3.0f,3.0f));
   
     AddAttachment_t(pmo, CYBORG_ATTACHMENT_ASS, 
@@ -1113,6 +1148,36 @@ extern void SetupCompModel_t(const CTString &strName)
     _colLight = C_lGRAY;
     _colAmbient = C_vdGRAY;
 
+  } else if (strName=="WalkerGunner") {
+    pmo->SetData_t(CTFILENAME("ModelsMP\\JAREP01\\Rakanishu\\Walker\\WalkerMinigun.mdl"));
+    pmo->PlayAnim(WALKER_ANIM_WALKBIG, AOF_LOOPING);
+    pmo->mo_toTexture.SetData_t(CTFILENAME("ModelsMP\\Enemies\\Walker\\WalkerYellow.tex"));
+    AddAttachment_t(pmo, WALKERMINIGUN_ATTACHMENT_MGA, 
+      CTFILENAME("Models\\Weapons\\MiniGun\\Body.mdl"), 0,
+      CTFILENAME("Models\\Weapons\\MiniGun\\Body.tex"),
+      CTFILENAME(""),
+      CTFILENAME("Models\\SpecularTextures\\Medium.tex"));
+    AddAttachment_t(pmo, WALKERMINIGUN_ATTACHMENT_MGB, 
+      CTFILENAME("Models\\Weapons\\MiniGun\\Body.mdl"), 0,
+      CTFILENAME("Models\\Weapons\\MiniGun\\Body.tex"),
+      CTFILENAME(""),
+      CTFILENAME("Models\\SpecularTextures\\Medium.tex"));
+    AddAttachment_t(pmo, WALKERMINIGUN_ATTACHMENT_MGC, 
+      CTFILENAME("Models\\Weapons\\MiniGun\\Barrels.mdl"), 0,
+      CTFILENAME("Models\\Weapons\\MiniGun\\Barrels.tex"),
+      CTFILENAME(""),
+      CTFILENAME("Models\\SpecularTextures\\Medium.tex"));
+    AddAttachment_t(pmo, WALKERMINIGUN_ATTACHMENT_MGD, 
+      CTFILENAME("Models\\Weapons\\MiniGun\\Barrels.mdl"), 0,
+      CTFILENAME("Models\\Weapons\\MiniGun\\Barrels.tex"),
+      CTFILENAME(""),
+      CTFILENAME("Models\\SpecularTextures\\Medium.tex"));
+    _plModel = CPlacement3D(FLOAT3D(0,-3.0f,-7.5), ANGLE3D(210,0,0));
+    pmo->StretchModel(FLOAT3D(0.8,0.8,0.8));
+    _bHasFloor = TRUE;
+    _colLight = C_lGRAY;
+    _colAmbient = C_vdGRAY;
+
   } else if (strName=="WalkerBig") {
     pmo->SetData_t(CTFILENAME("Models\\Enemies\\Walker\\Walker.mdl"));
     pmo->PlayAnim(WALKER_ANIM_WALKBIG, AOF_LOOPING);
@@ -1186,6 +1251,15 @@ extern void SetupCompModel_t(const CTString &strName)
     _bHasFloor = TRUE;
     _fFloorY = -1.5f;
 
+  } else if (strName=="Dragonman") {
+    pmo->SetData_t(CTFILENAME("AREP\\Models\\Dragonman2\\Dragonman.mdl"));
+    pmo->PlayAnim(DRAGONMAN_ANIM_AIRFLYLOOP, AOF_LOOPING);
+    pmo->mo_toTexture.SetData_t(CTFILENAME("AREP\\Models\\Dragonman2\\Dragonman01.tex"));
+    _plModel = CPlacement3D(FLOAT3D(0,0.0f,-10.0), ANGLE3D(210,20,0));
+    pmo->StretchModel(FLOAT3D(2,2,2));
+    _bHasFloor = TRUE;
+    _fFloorY = -3.0f;
+
   } else if (strName=="FlyingKleer") {
     pmo->SetData_t(CTFILENAME("ModelsMP\\Enemies\\SS2\\FlyingKleer\\FlyingKleer.mdl"));
     pmo->PlayAnim(FLYINGKLEER_ANIM_Idle, AOF_LOOPING);
@@ -1206,6 +1280,21 @@ extern void SetupCompModel_t(const CTString &strName)
     pmo->StretchModel(FLOAT3D(1,1,1));
     _bHasFloor = TRUE;
     _fFloorY = -1.5f;
+
+  } else if (strName=="FlyingFighter") {
+    pmo->SetData_t(CTFILENAME("AREP\\Models\\Sentry\\FlyingFighter\\Ship.mdl"));
+    pmo->mo_toTexture.SetData_t(CTFILENAME("AREP\\Models\\Sentry\\FlyingFighter\\Ship.tex"));
+    _plModel = CPlacement3D(FLOAT3D(0,0.0f,-3.0), ANGLE3D(210,-15,0));
+    pmo->StretchModel(FLOAT3D(1.5f,1.5f,1.5f));
+    _bHasFloor = TRUE;
+    _fFloorY = -1.5f;
+
+  } else if (strName=="DrivingWheel") {
+    pmo->SetData_t(CTFILENAME("AREP\\Models\\Sentry\\DrivingWheel\\Robot.mdl"));
+    pmo->mo_toTexture.SetData_t(CTFILENAME("AREP\\Models\\Sentry\\DrivingWheel\\Robot.tex"));
+    _plModel = CPlacement3D(FLOAT3D(0,-1.0f,-4.0), ANGLE3D(190,0,0));
+    pmo->StretchModel(FLOAT3D(0.75f,0.75f,0.75f));
+    _bHasFloor = TRUE;
 
   } else if (strName=="LostSoul") {
     pmo->SetData_t(CTFILENAME("ModelsMP\\Enemies\\SS3\\Kleer\\LostSoul.mdl"));
@@ -1288,6 +1377,15 @@ extern void SetupCompModel_t(const CTString &strName)
     pmo->mo_toTexture.SetData_t(CTFILENAME("ModelsMP\\Enemies\\SS2\\Lizard\\LizardRed.tex"));
     _plModel = CPlacement3D(FLOAT3D(0,-1.5f,-4.2f), ANGLE3D(150,0,0));
     pmo->StretchModel(FLOAT3D(1.5f,1.5f,1.5f));
+    _fFloorY = 0.0f;
+    _bHasFloor = TRUE;
+
+  } else if (strName=="LizardSpitter") {
+    pmo->SetData_t(CTFILENAME("ModelsMP\\Enemies\\SS2\\Lizard\\Lizard.mdl"));
+    pmo->PlayAnim(LIZARD_ANIM_RUN, AOF_LOOPING);
+    pmo->mo_toTexture.SetData_t(CTFILENAME("ModelsMP\\Enemies\\SS2\\Lizard\\LizardBlue.tex"));
+    _plModel = CPlacement3D(FLOAT3D(0,-0.95f,-2.7f), ANGLE3D(150,0,0));
+    pmo->StretchModel(FLOAT3D(0.8f,0.8f,0.8f));
     _fFloorY = 0.0f;
     _bHasFloor = TRUE;
 
@@ -1704,6 +1802,16 @@ extern void SetupCompModel_t(const CTString &strName)
     _fFloorY = 0.0f;
     _bHasFloor = TRUE;
 
+  } else if (strName=="Arch-vile") {
+    pmo->SetData_t(CTFILENAME("ModelsMP\\Enemies\\Demon\\Demon.mdl"));
+    pmo->PlayAnim(DEMON_ANIM_IDLE, AOF_LOOPING);
+    pmo->mo_toTexture.SetData_t(CTFILENAME("ModelsMP\\Enemies\\Demon\\DemonYellow.tex"));
+    _plModel = CPlacement3D(FLOAT3D(0.0f, -1.9f, -3.35f), ANGLE3D(160.0f, 0.0f, 0.0f));
+    
+    pmo->StretchModel(FLOAT3D(2.0f, 2.0f, 2.0f));
+    _fFloorY = 0.0f;
+    _bHasFloor = TRUE;
+
   } else if (strName=="Panda") {
     pmo->SetData_t(CTFILENAME("ModelsF\\Enemies\\Panda\\Panda.mdl"));
     pmo->PlayAnim(PANDA_ANIM_IDLE, AOF_LOOPING);
@@ -1735,6 +1843,17 @@ extern void SetupCompModel_t(const CTString &strName)
     _plModel = CPlacement3D(FLOAT3D(-0.25f, -2.0f, -3.75f), ANGLE3D(200.0f, 0.0f, 0.0f));
     
     pmo->StretchModel(FLOAT3D(1.4f, 1.4f, 1.4f));
+    _fFloorY = 0.0f;
+    _bHasFloor = TRUE;
+
+  } else if (strName=="Gladiator") {
+    pmo->SetData_t(CTFILENAME("ModelsF\\NextEncounter\\Enemies\\Gladiator\\Gladiator.mdl"));
+    pmo->PlayAnim(GLADIATOR_ANIM_IDLE, AOF_LOOPING);
+    pmo->mo_toTexture.SetData_t(CTFILENAME("ModelsF\\NextEncounter\\Enemies\\Gladiator\\Gladiator.tex"));
+    
+    _plModel = CPlacement3D(FLOAT3D(0.0f, -2.0f, -3.75f), ANGLE3D(175.0f, 0.0f, 0.0f));
+    
+    pmo->StretchModel(FLOAT3D(1.0f, 1.0f, 1.0f));
     _fFloorY = 0.0f;
     _bHasFloor = TRUE;
 
@@ -2022,16 +2141,16 @@ extern void SetupCompModel_t(const CTString &strName)
     _fFloorY = -0.5f;
 
   } else if (strName=="Sniper") {
-    pmo->SetData_t(CTFILENAME("ModelsMP\\Weapons\\Sniper\\Sniper.mdl"));
-    pmo->mo_toTexture.SetData_t(CTFILENAME("ModelsMP\\Weapons\\Sniper\\Body.tex"));
+    pmo->SetData_t(CTFILENAME("ModelsF\\Weapons\\Sniper\\SniperItem.mdl"));
+    pmo->mo_toTexture.SetData_t(CTFILENAME("ModelsF\\Weapons\\Sniper\\W_Set2_Class2.tex"));
     _plModel = CPlacement3D(FLOAT3D(0,-0.4f,-4.0f), ANGLE3D(0,10,0));
     _aRotation = ANGLE3D(100,0,0);
     _fFOV = 50.0f;
     _vLightDir = FLOAT3D( -0.1f, -0.2f, -0.2f);  
 
     AddAttachment_t(pmo, SNIPERITEM_ATTACHMENT_BODY, 
-      CTFILENAME("ModelsMP\\Weapons\\Sniper\\Body.mdl"), 0,
-      CTFILENAME("ModelsMP\\Weapons\\Sniper\\Body.tex"),
+      CTFILENAME("ModelsF\\Weapons\\Sniper\\Body.mdl"), 0,
+      CTFILENAME("ModelsF\\Weapons\\Sniper\\W_Set2_Class2.tex"),
       CTFILENAME("Models\\ReflectionTextures\\LightMetal01.tex"),
       CTFILENAME("Models\\SpecularTextures\\Medium.tex"));
     pmo->StretchModel(FLOAT3D(1.5,1.5,1.5));

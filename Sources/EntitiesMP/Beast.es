@@ -87,6 +87,8 @@ components:
 
  15 model   MODEL_PLASMAGUN           "ModelsMP\\Enemies\\ExotechLarva\\Weapons\\PlasmaGun.mdl",
  16 texture TEXTURE_PLASMAGUN         "ModelsMP\\Enemies\\ExotechLarva\\Weapons\\PlasmaGun.tex",
+ 17 model   MODEL_LARVA_PLASMA        "ModelsMP\\Enemies\\ExotechLarva\\Projectile\\Projectile.mdl",
+ 18 texture TEXTURE_LARVA_PLASMA      "ModelsMP\\Enemies\\ExotechLarva\\Projectile\\Projectile.tex",
 
  20 model   MODEL_BEAST_ARM           "ModelsF\\Enemies\\Beast\\Debris\\arm.mdl",
  21 model   MODEL_BEAST_LEGS           "ModelsF\\Enemies\\Beast\\Debris\\legs.mdl",
@@ -158,9 +160,11 @@ functions:
       PrecacheClass(CLASS_PROJECTILE, PRT_BEAST_BIG_PROJECTILE);
       PrecacheClass(CLASS_PROJECTILE, PRT_DEVIL_GUIDED_PROJECTILE);
     }
-	PrecacheModel(MODEL_PLASMAGUN);
-	PrecacheTexture(TEXTURE_PLASMAGUN);
-	PrecacheSound(SOUND_ROCKET);
+    PrecacheModel(MODEL_PLASMAGUN);
+    PrecacheTexture(TEXTURE_PLASMAGUN);
+    PrecacheModel(MODEL_LARVA_PLASMA);
+    PrecacheTexture(TEXTURE_LARVA_PLASMA);
+    PrecacheSound(SOUND_ROCKET);
   };
 
   /* Entity info */
