@@ -2917,6 +2917,10 @@ void CGame::GameMainLoop(void)
   // if game is started
   if (gm_bGameOn) {
     // do main loop procesing
+    if(IsScriptSoundPlaying(5)) // IF MUSIC PLAY...
+    {
+        StopScriptSound((void*)5); // STOP MUSIC
+    }
     _pNetwork->MainLoop();
   }
 }
@@ -3056,6 +3060,12 @@ void CGame::LCDScreenBoxOpenRight(COLOR col)
 }
 void CGame::LCDRenderClouds1(void)
 {
+  if(!IsScriptSoundPlaying(5))//If music not play in channel 5
+  {
+    PlayScriptSound(5/* sound cannel) */,\
+    CTFILENAME("MusicF\\Atlantis\\04-Aquarium_Peace.ogg")/* track */,\
+    1.0f/* volume */, 1.0f/* */, TRUE/* circle music */); 
+  }
 
   #ifdef FIRST_ENCOUNTER 
   LCDRenderCloudsForComp();
