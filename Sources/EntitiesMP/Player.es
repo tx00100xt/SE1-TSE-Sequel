@@ -3130,6 +3130,18 @@ functions:
       if (IsOfClass(penInflictor, "Player") && penInflictor!=this) {
         return;
       }
+      if (IsOfClass(penInflictor, "Projectile")) {
+        if (dmtType == DMT_EXPLOSION) {
+          {FOREACHINDYNAMICCONTAINER(_pNetwork->ga_World.wo_cenEntities, CEntity, pen) {
+            if(IsDerivedFromClass(pen, "Projectile")) {
+               if(((CProjectile&)*pen).m_strName == "ClusterGrenadeExplosion") {
+                 // CPrintF("Skip Projectile damage: %s\n",(const char*)((CProjectile&)*pen).m_strName); //  Debug messag
+                 return;
+               }
+            }
+          }}
+        }
+      }
     }
 
     // ignore heat damage if dead

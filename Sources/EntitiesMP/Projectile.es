@@ -622,6 +622,7 @@ properties:
  26 FLOAT m_tmInvisibility = 0.0f,           // don't render before given time
  27 INDEX m_iRebounds = 0,                   // how many times to rebound
  28 FLOAT m_fStretch=1.0f,                   // stretch
+ 29 CTString m_strName = "...Projectile...",
 
  30 CSoundObject m_soEffect,          // sound channel
  31 CSoundObject m_soExplosion,       // sound channel
@@ -1759,6 +1760,7 @@ void ClusterGrenadeExplosion(void) {
     pl.pl_OrientationAngle(2) = AngleDeg(fPitch);
 
     CEntityPointer penProjectile = CreateEntity(pl, CLASS_PROJECTILE);
+    ((CProjectile&)*penProjectile.ep_pen).m_strName = "ClusterGrenadeExplosion";
     ELaunchProjectile eLaunch;
     eLaunch.penLauncher = this;
     eLaunch.prtType = PRT_GRENADE_CLUSTERED;
@@ -1779,6 +1781,7 @@ void ClusterGrenadeExplosion(void) {
     pl.pl_OrientationAngle(2) = AngleDeg(fPitch);
 
     CEntityPointer penProjectile = CreateEntity(pl, CLASS_PROJECTILE);
+    ((CProjectile&)*penProjectile.ep_pen).m_strName = "ClusterGrenadeExplosion";
     ELaunchProjectile eLaunch;
     eLaunch.penLauncher = this;
     eLaunch.prtType = PRT_GRENADE_CLUSTERED;
@@ -1799,6 +1802,7 @@ void ClusterGrenadeExplosion(void) {
     pl.pl_OrientationAngle(2) = AngleDeg(fPitch);
 
     CEntityPointer penProjectile = CreateEntity(pl, CLASS_PROJECTILE);
+    ((CProjectile&)*penProjectile.ep_pen).m_strName = "ClusterGrenadeExplosion";
     ELaunchProjectile eLaunch;
     eLaunch.penLauncher = this;
     eLaunch.prtType = PRT_GRENADE_CLUSTERED;
@@ -1819,6 +1823,7 @@ void ClusterGrenadeExplosion(void) {
     pl.pl_OrientationAngle(2) = AngleDeg(fPitch);
 
     CEntityPointer penProjectile = CreateEntity(pl, CLASS_PROJECTILE);
+    ((CProjectile&)*penProjectile.ep_pen).m_strName = "ClusterGrenadeExplosion";
     ELaunchProjectile eLaunch;
     eLaunch.penLauncher = this;
     eLaunch.prtType = PRT_GRENADE_CLUSTERED;
@@ -1839,6 +1844,7 @@ void ClusterGrenadeExplosion(void) {
     pl.pl_OrientationAngle(2) = AngleDeg(fPitch);
 
     CEntityPointer penProjectile = CreateEntity(pl, CLASS_PROJECTILE);
+    ((CProjectile&)*penProjectile.ep_pen).m_strName = "ClusterGrenadeExplosion";
     ELaunchProjectile eLaunch;
     eLaunch.penLauncher = this;
     eLaunch.prtType = PRT_GRENADE_CLUSTERED;
