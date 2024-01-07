@@ -232,6 +232,7 @@ void CProjectile_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
     pdec->PrecacheClass(CLASS_BASIC_EFFECT, BET_EXPLOSIONSTAIN);
     pdec->PrecacheClass(CLASS_BASIC_EFFECT, BET_SHOCKWAVE);
     pdec->PrecacheClass(CLASS_BASIC_EFFECT, BET_GRENADE_PLANE);
+    pdec->PrecacheModel(MODEL_GRENADE);
     break;
   case PRT_GRENADE_NEW:
     pdec->PrecacheModel(MODEL_GRENADE_NEW);
@@ -483,8 +484,8 @@ void CProjectile_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
     pdec->PrecacheTexture(TEXTURE_GREEN_LASER          );
     break;
   case PRT_SCORP_PROJECTILE:
-    pdec->PrecacheModel(MODEL_BEAST_FIRE);
-    pdec->PrecacheTexture(TEXTURE_BEAST_FIRE);
+    pdec->PrecacheModel(MODEL_SPIDER_PROJECTILE);
+    pdec->PrecacheTexture(TEXTURE_SPIDER_PROJECTILE);
     pdec->PrecacheClass(CLASS_BASIC_EFFECT, BET_LASERWAVE);
     break;
   case PRT_SCORP_BIG_PROJECTILE:

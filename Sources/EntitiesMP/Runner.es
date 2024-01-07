@@ -49,6 +49,7 @@ components:
   0 class   CLASS_BASE          "Classes\\EnemyBase.ecl",
   1 class   CLASS_PROJECTILE    "Classes\\Projectile.ecl",
   2 class   CLASS_BASIC_EFFECT  "Classes\\BasicEffect.ecl",
+  3 class   CLASS_FLAME         "Classes\\Flame.ecl",
 
  10 model   MODEL_RUNNER              "ModelsF\\Enemies\\Runner\\Runner.mdl",
 
@@ -100,6 +101,7 @@ functions:
       PrecacheSound(SOUND_FLAME);
       // projectile
       PrecacheClass(CLASS_PROJECTILE, PRT_LASER_GREEN);
+      PrecacheClass(CLASS_FLAME);
   };
 
   /* Entity info */

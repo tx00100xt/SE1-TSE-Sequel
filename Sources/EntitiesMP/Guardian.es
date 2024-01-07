@@ -538,7 +538,7 @@ FireLaugh(EVoid) {
     m_fBlowUpAmount = 800.0f;
 	m_fBlowUpSize = 2.0f;
     m_fBodyParts = 10;
-    m_fDamageWounded = 150.0f;
+    m_fDamageWounded = 200.0f;
      m_iScore = 5000;
     m_fLockOnEnemyTime = 3.0f;
 

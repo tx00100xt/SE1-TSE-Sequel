@@ -54,7 +54,7 @@ event EForceExplode {
 
 #define IRON_LIFE_TIME  10.0f
 #define NUKE_LIFE_TIME  5.0f
-#define WEAK_LIFE_TIME  2.0f
+#define WEAK_LIFE_TIME  5.0f
 
 //#define CANNONBALL_STRETCH 3.0f
 
@@ -71,8 +71,8 @@ event EForceExplode {
 #define NUKE_RANGE_HOTSPOT 20.0f
 #define NUKE_RANGE_FALLOFF 40.0f
 
-#define WEAK_DAMAGE_MIN 20.0f
-#define WEAK_DAMAGE_MAX 50.0f
+#define WEAK_DAMAGE_MIN 30.0f
+#define WEAK_DAMAGE_MAX 60.0f
 #define WEAK_RANGE_DAMAGE (50.0f)
 #define WEAK_RANGE_HOTSPOT 4.0f
 #define WEAK_RANGE_FALLOFF 8.0f

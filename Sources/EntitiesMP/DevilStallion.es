@@ -47,6 +47,7 @@ components:
   2 texture TEXTURE_DS     "ModelsF\\NextEncounter\\Enemies\\DevilStallion\\DevilStallion.tex",
   3 class   CLASS_PROJECTILE  "Classes\\Projectile.ecl",
   4 class   CLASS_BASIC_EFFECT    "Classes\\BasicEffect.ecl",
+  5 class   CLASS_FLAME         "Classes\\Flame.ecl",
 
  14 model   MODEL_ARM           "ModelsF\\NextEncounter\\Enemies\\DevilStallion\\Debris\\Arm.mdl",
  15 model   MODEL_LEG           "ModelsF\\NextEncounter\\Enemies\\DevilStallion\\Debris\\Leg.mdl",
@@ -87,6 +88,7 @@ functions:
     PrecacheSound(SOUND_DEATH);
     PrecacheSound(SOUND_WINGS);
     PrecacheClass(CLASS_PROJECTILE, PRT_METEOR_SMALL);
+    PrecacheClass(CLASS_FLAME);
 
 
 	PrecacheModel(MODEL_ARM);

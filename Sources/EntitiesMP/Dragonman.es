@@ -55,6 +55,7 @@ components:
   1 model   MODEL_DRAGON       "AREP\\Models\\Dragonman2\\Dragonman.mdl",
   2 texture TEXTURE_DRAGON     "AREP\\Models\\Dragonman2\\Dragonman01.tex",
   3 class   CLASS_PROJECTILE  "Classes\\Projectile.ecl",
+  4 class   CLASS_FLAME         "Classes\\Flame.ecl",
 
 // ************** SOUNDS **************
  50 sound   SOUND_IDLE      "AREP\\Models\\Dragonman2\\Sounds\\Idle.wav",
@@ -89,6 +90,7 @@ functions:
     PrecacheSound(SOUND_KICK );
     PrecacheSound(SOUND_DEATH);
     PrecacheClass(CLASS_PROJECTILE, PRT_WOMAN_FIRE);
+    PrecacheClass(CLASS_FLAME);
   };
 
   /* Entity info */
