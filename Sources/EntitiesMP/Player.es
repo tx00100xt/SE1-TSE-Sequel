@@ -3130,13 +3130,35 @@ functions:
       if (IsOfClass(penInflictor, "Player") && penInflictor!=this) {
         return;
       }
+    }
+
+    // check for friendly fire (cluster grenade)
+    if (!GetSP()->sp_bFriendlyFire && GetSP()->sp_bCooperative) {
       if (IsOfClass(penInflictor, "Projectile")) {
         if (dmtType == DMT_EXPLOSION) {
-          {FOREACHINDYNAMICCONTAINER(_pNetwork->ga_World.wo_cenEntities, CEntity, pen) {
-            if(IsDerivedFromClass(pen, "Projectile")) {
-               if(((CProjectile&)*pen).m_strName == "ClusterGrenadeExplosion") {
-                 // CPrintF("Skip Projectile damage: %s\n",(const char*)((CProjectile&)*pen).m_strName); //  Debug messag
-                 return;
+          {FOREACHINDYNAMICCONTAINER(_pNetwork->ga_World.wo_cenEntities, CEntity, pen) { 
+            if(IsDerivedFromClass(pen, "Projectile")) {			
+			   // searching marked entity (not destroyed at this time)
+               if(((CProjectile&)*pen).m_bClusterGrenadeFound == TRUE) {
+				 // the marked entities have not yet been destroyed - so we skip
+				 fDamageAmmount = 0.0f;
+               }
+            }
+          }}
+        }
+      }
+    }
+	
+    // check for difficulty EASY or TOURIST
+    if (GetSP()->sp_gdGameDifficulty<=CSessionProperties::GD_EASY) {
+      if (IsOfClass(penInflictor, "Projectile")) {
+        if (dmtType == DMT_EXPLOSION) {
+          {FOREACHINDYNAMICCONTAINER(_pNetwork->ga_World.wo_cenEntities, CEntity, pen) { 
+            if(IsDerivedFromClass(pen, "Projectile")) {			
+			   // searching marked entity (not destroyed at this time)
+               if(((CProjectile&)*pen).m_bClusterGrenadeFound == TRUE) {
+				 // the marked entities have not yet been destroyed - so we skip
+				 fDamageAmmount = 0.0f;
                }
             }
           }}
