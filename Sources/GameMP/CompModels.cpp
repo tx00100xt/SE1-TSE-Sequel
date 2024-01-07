@@ -1132,21 +1132,21 @@ extern void SetupCompModel_t(const CTString &strName)
     pmo->SetData_t(CTFILENAME("Models\\Enemies\\Walker\\Walker.mdl"));
     pmo->PlayAnim(WALKER_ANIM_WALKBIG, AOF_LOOPING);
     pmo->mo_toTexture.SetData_t(CTFILENAME("Models\\Enemies\\Walker\\Walker02.tex"));
-    AddAttachment_t(pmo, WALKER_ATTACHMENT_ROCKETLAUNCHER_LT, 
-      CTFILENAME("Models\\Enemies\\Walker\\RocketLauncher.mdl"), 0,
-      CTFILENAME("Models\\Enemies\\Walker\\RocketLauncher.tex"),
+    AddAttachment_t(pmo, WALKER_ATTACHMENT_LASER_LT, 
+      CTFILENAME("Models\\Enemies\\Walker\\Laser.mdl"), 0,
+      CTFILENAME("Models\\Enemies\\Walker\\Laser.tex"),
       CTFILENAME(""),
       CTFILENAME("Models\\SpecularTextures\\Medium.tex"));
-    AddAttachment_t(pmo, WALKER_ATTACHMENT_ROCKETLAUNCHER_RT, 
-      CTFILENAME("Models\\Enemies\\Walker\\RocketLauncher.mdl"), 0,
-      CTFILENAME("Models\\Enemies\\Walker\\RocketLauncher.tex"),
+    AddAttachment_t(pmo, WALKER_ATTACHMENT_LASER_RT, 
+      CTFILENAME("Models\\Enemies\\Walker\\Laser.mdl"), 0,
+      CTFILENAME("Models\\Enemies\\Walker\\Laser.tex"),
       CTFILENAME(""),
       CTFILENAME("Models\\SpecularTextures\\Medium.tex"));
     _plModel = CPlacement3D(FLOAT3D(0,-2.0f,-5.0), ANGLE3D(210,0,0));
     pmo->StretchModel(FLOAT3D(0.5,0.5,0.5));
     _bHasFloor = TRUE;
     _colLight = C_lGRAY;
-    _colAmbient = C_vdGRAY;
+    _colAmbient = C_vdGRAY;;
 
   } else if (strName=="WalkerGunner") {
     pmo->SetData_t(CTFILENAME("ModelsMP\\JAREP01\\Rakanishu\\Walker\\WalkerMinigun.mdl"));
